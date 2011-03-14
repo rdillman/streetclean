@@ -1,0 +1,11 @@
+
+<% form_tag "process_address", :method => 'get' do %>
+  <p>
+    <%= text_field_tag :address, params[:address] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<p>Ex: 988 Guerrero St. San Francisco, CA 94110</p>
+
+
+

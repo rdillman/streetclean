@@ -1,4 +1,8 @@
 Streetclean::Application.routes.draw do
+
+  get "locations/locate_car"
+  get "locations/process_address"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -12,6 +16,7 @@ Streetclean::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  # resources :address
 
   # Sample resource route with options:
   #   resources :products do
