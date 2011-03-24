@@ -1,0 +1,16 @@
+<h1>Search Results for the <%= @results[0].bottomr%> block of <%= @results[0].streetname.capitalize%> </h1>
+<br>	
+<table>
+  <tr><b>
+    <th>Day</th>
+    <th>Start</th>
+    <th>Finish</th>
+  </b></tr>
+<% @results.each do |result| %>
+  <tr>
+    <td><%= result.day %></td>
+    <td><%= result.start %></td>
+    <td><%= result.finish %></td>
+  </tr>
+<% end %>
+</table>

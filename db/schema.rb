@@ -10,6 +10,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20110323234316) do
+
+  create_table "streets", :force => true do |t|
+    t.string  "streetname"
+    t.string  "rl"
+    t.integer "bottoml"
+    t.integer "topl"
+    t.integer "bottomr"
+    t.integer "topr"
+    t.string  "day"
+    t.string  "start"
+    t.string  "finish"
+    t.boolean "wk1"
+    t.boolean "wk2"
+    t.boolean "wk3"
+    t.boolean "wk4"
+    t.boolean "wk5"
+    t.boolean "holiday"
+  end
+
+  create_table "users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vehicles", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

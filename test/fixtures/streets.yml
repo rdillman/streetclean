@@ -1,0 +1,35 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  streetname: MyString
+  rl: MyString
+  bottoml: 1
+  topl: 1
+  bottomr: 1
+  topr: 1
+  day: MyString
+  start: MyString
+  finish: MyString
+  wk1: false
+  wk2: false
+  wk3: false
+  wk4: false
+  wk5: false
+  holiday: false
+
+two:
+  streetname: MyString
+  rl: MyString
+  bottoml: 1
+  topl: 1
+  bottomr: 1
+  topr: 1
+  day: MyString
+  start: MyString
+  finish: MyString
+  wk1: false
+  wk2: false
+  wk3: false
+  wk4: false
+  wk5: false
+  holiday: false

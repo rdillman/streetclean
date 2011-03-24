@@ -1,5 +1,9 @@
 Streetclean::Application.routes.draw do
 
+  get "street/index"
+
+  get "street/show"
+
   get "locations/locate_car"
   get "locations/process_address"
 
@@ -53,7 +57,7 @@ Streetclean::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+   root :to => "street#index"
 
   # See how all your routes lay out with "rake routes"
 
