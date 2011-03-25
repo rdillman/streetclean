@@ -1,8 +1,14 @@
-<h1>Fuck the Police</h1>
-<p>Where are you parked?</p>
-<p>
-<%= form_tag("/street/show/", :method => "get") do %>
-	  <%= text_field_tag(:q) %>
-	  <%= submit_tag("Search") %>
-	<% end %>
-</p>
+<div class="container">
+	<div id="ticket_photo">
+		<%= image_tag "parking_ticket.jpg", :alt => 'Parking Ticket!' %>
+	</div>
+	<div id="user_input">
+		<p>Where are you parked?</p>
+		<p>
+		<%= form_tag("/street/show/", :method => "get") do %>
+			  <%= text_field_tag(:q) %>
+			  <%= submit_tag("Search") %>
+			<% end %>
+		</p>
+	</div>
+</div >

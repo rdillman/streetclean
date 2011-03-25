@@ -1,0 +1,12 @@
+.container{
+	margin-right: auto;
+	margin-left: auto;
+	width:75%;
+	text-align: center;
+}
+
+#user_input{
+	border: solid;
+	border-width: 5px;
+	border-color: red;
+}

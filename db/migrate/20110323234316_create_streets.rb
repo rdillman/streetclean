@@ -8,8 +8,8 @@ class CreateStreets < ActiveRecord::Migration
       t.integer :bottomr
       t.integer :topr
       t.string :day
-      t.string :start
-      t.string :finish
+      t.time :start
+      t.time :finish
       t.boolean :wk1
       t.boolean :wk2
       t.boolean :wk3
