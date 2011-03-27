@@ -1,30 +1,3 @@
-<div class="container">
-<h1><%= @results[0].bottomr%> block of <%= @results[0].streetname.capitalize%> </h1>
-<!-- <br>	
-<table>
-  <tr><b>
-    <th>Day</th>
-    <th>Start</th>
-    <th>Finish</th>
-  </b></tr>
-<% @results.each do |result| %>
-  <tr>
-    <td><%= result.day %></td>
-    <td><%= result.start %></td>
-    <td><%= result.finish %></td>
-  </tr>
-<% end %>
-</table> -->
+<!-- ALL OF THESE HELPER FUNCTIONS LIVE IN /app/helpers/street_helper.rb -->
+<%= start_n_stop_times(@result) %>
 
-You Parked you car on the <%= @results[0].bottomr%> block of <%= @results[0].streetname.capitalize%> at <%= Time.now %><br />
-You need to move your vehicle by
-<!-- <% @results.each do |result| %>
-	<%= result.day %>
-	<%= result.start %>
-<% end %> -->
-<%=if Time.now > results[0].day
-  return results[1].day 
-	end %>
-<%= @results[0].day %>
-<%= @results[0].start %>
-</div>

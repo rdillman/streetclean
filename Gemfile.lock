@@ -34,6 +34,7 @@ GEM
     activesupport (3.0.5)
     arel (2.0.9)
     builder (2.1.2)
+    chronic (0.3.0)
     columnize (0.3.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -87,6 +88,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_scaffold
+  chronic
   json
   rails (= 3.0.5)
   ruby-debug

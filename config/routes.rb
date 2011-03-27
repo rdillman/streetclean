@@ -1,4 +1,5 @@
 Streetclean::Application.routes.draw do
+  resources :street
 
   get "street/index"
 

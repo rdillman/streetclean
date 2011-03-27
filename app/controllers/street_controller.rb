@@ -1,28 +1,38 @@
 class StreetController < ApplicationController
+ #Most(if not all) Helper functions from this file live in app/controllers/application_controller.rb
+ 
   def index
   end
 
   def show
-    @blocks = params[:q]
-    @blocks.upcase!
-    @num, @name, @suf = @blocks.split(" ")
-    @num.to_i
-    @s = @num % 2
-    @side = "R"
-    if @s == 1
-      @side = "L"
+    
+    #Format User Input from Search Bar:  101 Market St -> [101, Market, St]
+    num, name, suf = split_input(params[:q])
+    num = num.to_i
+    name = add_suffix(name, suf)
+    
+    #Figure out the side of the Street then search the Database
+    side = find_side(num)
+    if (side == "R")
+      @results = Street.where("streetname =? AND rl =? AND bottomr <=? AND topr >=?", name,side,num,num)
+    elsif (side =="L")
+      @results = Street.where("streetname =? AND rl =? AND bottoml <=? AND topl >=?", name,side,num,num)
     end
     
-    #ADD SUFFIX CHECK SOMEWHERE ROUND HERE
-    @name += " "+ @suf
-    
-    @results = Street.where("streetname =? AND rl =? AND bottomr <=? AND topr >=?", @name,@side,@num,@num)
-    
+    #Get the next time
+    @result = get_next_time(@results)
+
     
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @results }
+      format.xml  { render :xml => @result }
     end
   end
+  
+  
+  
+  
+  
+  private
 
 end
