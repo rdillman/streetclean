@@ -20,12 +20,12 @@ class StreetController < ApplicationController
     end
     
     #Get the next time
-    @result = get_next_time(@results)
+    @result, @warning  = get_next_time(@results)
 
-    
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @result }
+      format.xml  { render :xml => @result}
+      format.xml  { render :xml => @warning }
     end
   end
   
