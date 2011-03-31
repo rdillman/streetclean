@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # --WARNING-- This function aint equipped to deal w/ holidays,every-other-week streets, or 
   # or same day requests...yet
     def get_next_time(ct)
-    
+        
       now = Time.now
       warning_flag = nil
       best = nil
@@ -91,9 +91,9 @@ class ApplicationController < ActionController::Base
       stop_times = Array.new
      
       months << Chronic.parse("today")
-      months << Chronic.parse("1 month hence")
+      months << Chronic.parse("next month")
      
-
+      
       start_times, stop_times = populate_start_stop_times(ct, start_times, stop_times, months)
       ct.day, warn = pick_smallest(start_times,stop_times,warn,now)
       return ct, warn            
@@ -229,7 +229,13 @@ class ApplicationController < ActionController::Base
     #For parsing the input and making it uppercase
     def split_input(str)
       str.upcase!
-      return str.split
+      splt_str= str.split
+      num = splt_str[0]
+      num = num.to_i
+      len = splt_str.length
+      name = splt_str.pop(len-1)
+      name = name.join(" ")
+      return num, name
     end
   
     #-------------------------------------------
@@ -251,6 +257,7 @@ class ApplicationController < ActionController::Base
     #--------------------------------------------
     def holiday?(date)
       holidays = ["January 01","January 17","February 21","May 30","July 04","September 05","October 10","November 11","November 24","November 25","December 25"]
+      debugger
       if holidays.find{|x| x == date.strftime("%B %d")}
         return TRUE
       end

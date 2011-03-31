@@ -6,15 +6,15 @@ module StreetHelper
     next_clean_day = res.day
     next_clean_fin = Chronic.parse(res.finish)
     
-    if res.bottomr == nil
+    if res.bottomr != nil
       block_num = res.bottomr
-    elsif
+    else
       block_num = res.bottoml-1
     end
     
     all_times = add_warning(warn)
   
-    
+    debugger
     block_num = block_num.to_s
     all_times += "The next street clean for the "+block_num+" block of "+res.streetname+" is on "
     all_times += next_clean_day.strftime("%A, %B %d from %I:%M%p ")

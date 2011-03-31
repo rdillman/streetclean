@@ -10,6 +10,7 @@ gem 'json'
 gem 'active_scaffold'
 gem 'chronic'
 gem 'ruby-debug'
+gem 'bossman'
 
 # Devise Authentication Gem
 gem 'devise'

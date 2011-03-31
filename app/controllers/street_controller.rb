@@ -2,7 +2,7 @@ class StreetController < ApplicationController
  #Most(if not all) Helper functions from this file live in app/controllers/application_controller.rb
   
   # User must sign in before using service!
-  before_filter :authenticate_user!, :except => [:index]
+  #before_filter :authenticate_user!, :except => [:index]
   
   def index
   end
@@ -10,9 +10,8 @@ class StreetController < ApplicationController
   def show
     
     #Format User Input from Search Bar:  101 Market St -> [101, Market, St]
-    num, name, suf = split_input(params[:q])
-    num = num.to_i
-    name = add_suffix(name, suf)
+    num, name = split_input(params[:q])
+    
     
     #Figure out the side of the Street then search the Database
     side = find_side(num)
