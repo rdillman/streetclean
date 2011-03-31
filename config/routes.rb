@@ -1,5 +1,5 @@
 Streetclean::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :path_name => { :sign_up => "register"}
 
   resources :street
 

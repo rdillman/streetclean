@@ -1,6 +1,9 @@
 class StreetController < ApplicationController
  #Most(if not all) Helper functions from this file live in app/controllers/application_controller.rb
- 
+  
+  # User must sign in before using service!
+  before_filter :authenticate_user!, :except => [:index]
+  
   def index
   end
 
