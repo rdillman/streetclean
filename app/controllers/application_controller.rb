@@ -11,42 +11,51 @@ class ApplicationController < ActionController::Base
   # This function determines the next street cleaning time from an array of activeRecord database responses
   # --WARNING-- This function aint equipped to deal w/ holidays,every-other-week streets, or 
   # or same day requests...yet
-    def get_next_time(results)
+    def get_next_time(ct)
     
       now = Time.now
-      current_flag = nil
-      holiday_flag = nil
+      warning_flag = nil
       best = nil
+            
       
-      hol = holiday?(now)
+      if not_weekly?(ct[0])
+        ct, warning_flag =  get_non_weekly_best_time(ct[0],warning_flag,now)
+        return ct, warning_flag
+      end
+      
       
       #Create copy of records in order to manipulate the dates---------------
-      copy = create_copy(results,now)
+      result_copy = create_copy(ct,now)
      
       #Same-day Test---------------------------------------------------------
-      same = copy.find{|x| x.bottomr == 0}
+      same = result_copy.find{|x| x.bottomr == 0}
       # if there is a day at the same time
       
       if same
-        same, current_flag = same_day_alterations(same,now,current_flag)
+        same, warning_flag = same_day_alterations(same,now,warning_flag)
       end
     
-      copy.each do |x|
+    # Compensate for Holidays 
+      result_copy.each do |x|
         while holiday?(x.streetname) and cleaned_on_holidays?(x) == FALSE
           add_n_weeks(x,1)
         end
       end
       
-      best = copy.min_by{|x|x.topl}
-      very_best = results.find{|x|x.id == best.id}
-      very_best.day = best.streetname
-      return very_best, current_flag
+      #-----Find the original ct that matched the best result
+      best = result_copy.min_by{|x|x.topl}
+      best_matching_result = ct.find{|x|x.id == best.id}
+    
+      
+      #-----Change day value of best result to the actual street clean time 
+      best_matching_result.day = best.streetname
+      return best_matching_result, warning_flag
     end
     
     
     #-------Change if Same Day
     
-    def same_day_alterations(same, now, current_flag)
+    def same_day_alterations(same, now, warning_flag)
       if not_weekly?(same)
         #something
       else
@@ -58,17 +67,107 @@ class ApplicationController < ActionController::Base
         end
       end
       if b4_ct?(same,now)
-        current_flag = 1
+        warning_flag = 1
       end
       if during_ct?(same,now)
-        current_flag = -1
+        warning_flag = -1
         add_n_weeks(same,1)
       end
       if after_ct?(same,now)
         add_n_weeks(same,1)
       end
       
-      return same, current_flag
+      return same, warning_flag
+    end
+    
+    
+    
+    def get_non_weekly_best_time(ct,warn,now)
+      closest_times = nil
+      day = ct.day
+      best = 1.year
+      months= Array.new
+      start_times = Array.new
+      stop_times = Array.new
+     
+      months << Chronic.parse("today")
+      months << Chronic.parse("1 month hence")
+     
+
+      start_times, stop_times = populate_start_stop_times(ct, start_times, stop_times, months)
+      ct.day, warn = pick_smallest(start_times,stop_times,warn,now)
+      return ct, warn            
+    end
+    
+    def populate_start_stop_times(ct, start_times, finish_times, months)
+      months.each do |y|
+        this_month = y.strftime("%B")
+        day = ct.day
+        if ct.wk1?
+          target_date = Chronic.parse("1st "+day+" in "+this_month)
+          start_times,finish_times = fill_week_times(ct,target_date,start_times,finish_times)
+        end
+        if ct.wk2?
+          target_date = Chronic.parse("2nd "+day+" in "+this_month)
+          start_times,finish_times = fill_week_times(ct,target_date,start_times,finish_times)       
+        end
+        if ct.wk3?
+          target_date = Chronic.parse("3rd "+day+" in "+this_month)
+          start_times,finish_times = fill_week_times(ct,target_date,start_times,finish_times) 
+        end
+        if ct.wk4?
+          target_date = Chronic.parse("4th "+day+" in "+this_month)
+          start_times,finish_times = fill_week_times(ct,target_date,start_times,finish_times)
+        end
+        if ct.wk5?
+          target_date = Chronic.parse("5th "+day+" in "+this_month)
+          start_times,finish_times = fill_week_times(ct,target_date,start_times,finish_times)
+        end
+      end
+      return start_times, finish_times
+    end
+    
+    
+    def pick_smallest(start, stop, warn, now)
+      best = 1.year
+      top_pick = nil
+      
+      
+      stop.each do |x|
+        
+        curr_start = stop.find_index(x)
+        time_diff = x-now
+        if time_diff > 0 and time_diff < best
+          
+          if start[curr_start] < now
+            
+            current_warning = -1
+            x = x+2.month
+          else
+            best = time_diff
+            top_pick = curr_start
+          end
+        end
+      end
+      return start[top_pick], warn
+    end
+    
+          
+        
+    
+    def fill_week_times(ct,target_date,start_times,finish_times)
+      if holiday?(target_date)== false
+          target_date_str = target_date.strftime("%D")
+          start_times << Chronic.parse(target_date_str+" "+ct.start)
+          finish_times << Chronic.parse(target_date_str+" "+ct.finish)
+      elsif
+        if cleaned_on_holidays?(target_date)
+          target_date_str = target_date.strftime("%D")
+          start_times << Chronic.parse(target_date_str+" "+ct.start)
+          finish_times << Chronic.parse(target_date_str+" "+ct.finish)
+        end
+      end
+      return start_times,finish_times
     end
     
     
@@ -215,4 +314,3 @@ class ApplicationController < ActionController::Base
     end    
       
   end
-  
