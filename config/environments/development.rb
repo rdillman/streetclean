@@ -17,6 +17,10 @@ Streetclean::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
   
+  # Default for Devise in development
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  
   # Set delivery method to sendmail
   # config.action_mailer.delivery_method = :sendmail
   # UserMailer.deliver_registration_confirmation(@user)

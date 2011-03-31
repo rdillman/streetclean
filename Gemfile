@@ -11,6 +11,9 @@ gem 'active_scaffold'
 gem 'chronic'
 gem 'ruby-debug'
 
+# Devise Authentication Gem
+gem 'devise'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

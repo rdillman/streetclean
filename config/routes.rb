@@ -1,4 +1,6 @@
 Streetclean::Application.routes.draw do
+  devise_for :users
+
   resources :street
 
   get "street/index"
@@ -7,6 +9,7 @@ Streetclean::Application.routes.draw do
 
   get "locations/locate_car"
   get "locations/process_address"
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

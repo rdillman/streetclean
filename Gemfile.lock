@@ -33,9 +33,14 @@ GEM
       activesupport (= 3.0.5)
     activesupport (3.0.5)
     arel (2.0.9)
+    bcrypt-ruby (2.1.4)
     builder (2.1.2)
     chronic (0.3.0)
     columnize (0.3.2)
+    devise (1.2.1)
+      bcrypt-ruby (~> 2.1.2)
+      orm_adapter (~> 0.0.3)
+      warden (~> 1.0.3)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
@@ -47,6 +52,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    orm_adapter (0.0.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -82,6 +88,8 @@ GEM
     verification (1.0.1)
       actionpack (~> 3.0.0)
       activesupport (~> 3.0.0)
+    warden (1.0.3)
+      rack (>= 1.0.0)
 
 PLATFORMS
   ruby
@@ -89,6 +97,7 @@ PLATFORMS
 DEPENDENCIES
   active_scaffold
   chronic
+  devise
   json
   rails (= 3.0.5)
   ruby-debug
