@@ -14,7 +14,7 @@ module StreetHelper
     
     all_times = add_warning(warn)
   
-    debugger
+    #debugger
     block_num = block_num.to_s
     all_times += "The next street clean for the "+block_num+" block of "+res.streetname+" is on "
     all_times += next_clean_day.strftime("%A, %B %d from %I:%M%p ")

@@ -257,7 +257,7 @@ class ApplicationController < ActionController::Base
     #--------------------------------------------
     def holiday?(date)
       holidays = ["January 01","January 17","February 21","May 30","July 04","September 05","October 10","November 11","November 24","November 25","December 25"]
-      debugger
+      #debugger
       if holidays.find{|x| x == date.strftime("%B %d")}
         return TRUE
       end
