@@ -8,16 +8,14 @@ class ApplicationController < ActionController::Base
 
   private #-------------------------------------------------------HELPER METHODS 
   
-  # This function determines the next street cleaning time from an array of activeRecord database responses
-  # --WARNING-- This function aint equipped to deal w/ holidays,every-other-week streets, or 
-  # or same day requests...yet
+  # This function determines the next street cleaning time from an array of activeRecord database responses. 
     def get_next_time(ct)
         
       now = Time.now
       warning_flag = nil
       best = nil
             
-      
+      # If the record is a non-weekly street - like Bush St. 
       if not_weekly?(ct[0])
         ct, warning_flag =  get_non_weekly_best_time(ct[0],warning_flag,now)
         return ct, warning_flag
@@ -56,23 +54,30 @@ class ApplicationController < ActionController::Base
     #-------Change if Same Day
     
     def same_day_alterations(same, now, warning_flag)
-      if not_weekly?(same)
-        #something
-      else
-        subtract_n_weeks(same,1)
-      end
+      #If same-day request, Chronic returns a time that is a week ahead, so subtract one week from that
+      subtract_n_weeks(same,1)
+      
+      #If the current day is a holiday, and the street is not cleaned on a holiday, move to the next
+      #clean time by adding a week
       if holiday?(now)
         if cleaned_on_holidays?(same) == FALSE
           add_n_weeks(same,1)
         end
       end
+      
+      #If the request is before a clean time, set the appropriate warning flag for the user
       if b4_ct?(same,now)
         warning_flag = 1
       end
+      
+      #If it is during the cleaning time, set the appropriate warning flag, then add a week 
+      # to the clean time, so that the controller will return the next time
       if during_ct?(same,now)
         warning_flag = -1
         add_n_weeks(same,1)
       end
+      
+      #If it is after the cleaning time, add a week back
       if after_ct?(same,now)
         add_n_weeks(same,1)
       end
@@ -81,7 +86,9 @@ class ApplicationController < ActionController::Base
     end
     
     
-    
+    #This function returns the next clean time for a non weekly street
+    #It creates two arrays for the start and stop times for the cleaning time 
+    #Then it figures out which is closest to the current date and returns that
     def get_non_weekly_best_time(ct,warn,now)
       closest_times = nil
       day = ct.day
@@ -90,11 +97,14 @@ class ApplicationController < ActionController::Base
       start_times = Array.new
       stop_times = Array.new
      
+     #Compute the next two months
       months << Chronic.parse("today")
       months << Chronic.parse("next month")
      
-      
+      #Fill in the start and stop arrays
       start_times, stop_times = populate_start_stop_times(ct, start_times, stop_times, months)
+      
+      #return the smallest one 
       ct.day, warn = pick_smallest(start_times,stop_times,warn,now)
       return ct, warn            
     end
@@ -154,7 +164,8 @@ class ApplicationController < ActionController::Base
     
           
         
-    
+    #this fills in an array of the clean times for the current month and the next month
+    #it is only called for non-weekly streets
     def fill_week_times(ct,target_date,start_times,finish_times)
       if holiday?(target_date)== false
           target_date_str = target_date.strftime("%D")
@@ -171,15 +182,11 @@ class ApplicationController < ActionController::Base
     end
     
     
-    #-------Change if Every_Other_Week
-    
-    
-    #-------change if Holiday
-    
     
     
     
     #-------------------------------------------------
+    #This function 
     def create_copy(mas,now)
       today_num = Time.now.wday
       copy = mas.clone
@@ -230,8 +237,13 @@ class ApplicationController < ActionController::Base
     def split_input(str)
       str.upcase!
       splt_str= str.split
+      
+      #Get address number and change it to integer
       num = splt_str[0]
       num = num.to_i
+      
+      # seperate the streetname and suffix from the rest of theinput
+      # and join them all together
       len = splt_str.length
       name = splt_str.pop(len-1)
       name = name.join(" ")
@@ -254,10 +266,9 @@ class ApplicationController < ActionController::Base
       return street +" "+suf
     end
     
-    #--------------------------------------------
+    #-Is a cretain daya a holiday?------------------------------------
     def holiday?(date)
       holidays = ["January 01","January 17","February 21","May 30","July 04","September 05","October 10","November 11","November 24","November 25","December 25"]
-      debugger
       if holidays.find{|x| x == date.strftime("%B %d")}
         return TRUE
       end
