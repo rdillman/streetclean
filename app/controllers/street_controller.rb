@@ -11,18 +11,29 @@ class StreetController < ApplicationController
     
     #Format User Input from Search Bar:  101 Market St -> [101, Market, St]
     num, name = split_input(params[:q])
+
+    #ERROR CHECKING  - for now, only checks for valid streetname
+    @results = Oops.where("name = ?", name)
     
-    
-    #Figure out the side of the Street then search the Database
-    side = find_side(num)
-    if (side == "R")
-      @results = Street.where("streetname =? AND rl =? AND bottomr <=? AND topr >=?", name,side,num,num)
-    elsif (side =="L")
-      @results = Street.where("streetname =? AND rl =? AND bottoml <=? AND topl >=?", name,side,num,num)
+    #If record will not be found
+    if (@results == [])
+      #set warning flag and return search query
+      @result = name
+      @warning = -2
+    else
+      side = find_side(num)
+      if (side == "R")
+        @results = Street.where("streetname =? AND rl =? AND bottomr <=? AND topr >=?", name,side,num,num)
+      elsif (side =="L")
+        @results = Street.where("streetname =? AND rl =? AND bottoml <=? AND topl >=?", name,side,num,num)
+      end
+      #Get the next time
+      @result, @warning  = get_next_time(@results)
     end
     
-    #Get the next time
-    @result, @warning  = get_next_time(@results)
+
+    
+
 
     respond_to do |format|
       format.html # show.html.erb
