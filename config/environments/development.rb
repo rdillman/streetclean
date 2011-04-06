@@ -15,15 +15,18 @@ Streetclean::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
   
   # Default for Devise in development
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   #Mail.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?
+  
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+  config.action_mailer.default_charset = 'utf-8'
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
   
   
   # Set delivery method to sendmail
-  # config.action_mailer.delivery_method = :sendmail
   # UserMailer.deliver_registration_confirmation(@user)
 
   # Print deprecation notices to the Rails logger

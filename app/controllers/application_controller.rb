@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   
 
   private #-------------------------------------------------------HELPER METHODS 
+
+        
   
   # This function determines the next street cleaning time from an array of activeRecord database responses. 
     def get_next_time(ct)
@@ -141,8 +143,6 @@ class ApplicationController < ActionController::Base
     def pick_smallest(start, stop, warn, now)
       best = 1.year
       top_pick = nil
-      
-      
       stop.each do |x|
         
         curr_start = stop.find_index(x)
@@ -269,10 +269,6 @@ class ApplicationController < ActionController::Base
     #-Is a cretain daya a holiday?------------------------------------
     def holiday?(date)
       holidays = ["January 01","January 17","February 21","May 30","July 04","September 05","October 10","November 11","November 24","November 25","December 25"]
-<<<<<<< HEAD
-      #debugger
-=======
->>>>>>> 6fbb14fb19aff84c641cd199e5bf56dc518d34f1
       if holidays.find{|x| x == date.strftime("%B %d")}
         return TRUE
       end

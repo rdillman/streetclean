@@ -34,8 +34,6 @@ GEM
     activesupport (3.0.5)
     arel (2.0.9)
     bcrypt-ruby (2.1.4)
-    bossman (0.4.1)
-      activesupport (>= 2.1.0)
     builder (2.1.2)
     chronic (0.3.0)
     columnize (0.3.2)
@@ -98,10 +96,10 @@ PLATFORMS
 
 DEPENDENCIES
   active_scaffold
-  bossman
   chronic
   devise
   json
+  mail (= 2.2.15)
   rails (= 3.0.5)
   ruby-debug
   sqlite3

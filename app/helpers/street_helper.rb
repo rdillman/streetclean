@@ -19,9 +19,7 @@ module StreetHelper
     end
     
     #Make a beautiful string with block #, start and sstop times
-    all_times = add_warning(warn)
-<<<<<<< HEAD
-  
+    all_times = add_warning(warn)  
     block_num = block_num.to_s
     all_times += "The next street clean for the "+block_num+" block of "+res.streetname+" is on "
     all_times += next_clean_day.strftime("%A, %B %d from %I:%M%p ")

@@ -1,14 +1,12 @@
 Streetclean::Application.routes.draw do
   devise_for :users, :path_name => { :sign_up => "register"}
 
-  resources :street
-
   get "street/index"
-
   get "street/show"
+  get "street/email"
 
   get "locations/locate_car"
-  get "locations/process_address"
+  
   
 
   # The priority is based upon order of creation:
