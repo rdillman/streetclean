@@ -25,22 +25,33 @@
 </script>
 
 </head>
-<body>
-	<div is="user_nav">
-		<% if user_signed_in? %>
-			Signed In as <%= current_user.email %>. Not you?
-			<%= link_to "Sign Out", destroy_user_session_path %>
-		<% else %>
-			<%= link_to "Sign Up ", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
-		<% end %>
-	</div>
+<div id="container1">
+	<body id="body">
+		<div id="user_nav">
+			<div id="user_sign">
+				<% if user_signed_in? %>
+					Signed In as <%= current_user.email %>. Not you?
+					<%= link_to "Sign Out", destroy_user_session_path %>
+				<% else %>
+					<%= link_to "Sign Up ", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
+				<% end %>
+			</div>
+			<div id="links">
+				<%= link_to "About Us", :controller => "layouts", :action => "about_us", :class => "button"%>	
+				<%= link_to "Contact Us", :controller => "layouts", :action => "contact_us", :class => "button"%>	
+			</div>
+		</div>
+		<div id="logo">
+			<p>Ticket.Cricket</p>
+		</div>
 
-<%= yield %>
+	<%= yield %>
 
-<hr />
-<center>
-	All this created by The Dillman and RiverMan
-</center>
+	<hr style="border-width:0px;margin:0px;" />
+	<center>
+		All this created by The Dillman and RiverMan
+	</center>
 
-</body>
+	</body>
+</div>
 </html>

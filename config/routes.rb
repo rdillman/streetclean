@@ -7,6 +7,10 @@ Streetclean::Application.routes.draw do
 
   get "locations/locate_car"
   
+  # Links
+  get "layouts/about_us"
+  get "layouts/contact_us"
+  
   
 
   # The priority is based upon order of creation:
