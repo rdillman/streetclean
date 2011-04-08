@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+  before_filter :authenticate
   
   
   
@@ -328,7 +328,14 @@ class ApplicationController < ActionController::Base
         return FALSE
       else 
         return TRUE
-      end
-    end    
-      
+    end
+  end    
+  
+  protected
+  
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "ticket.cricket" && password == "winning"
+    end
   end
+end
