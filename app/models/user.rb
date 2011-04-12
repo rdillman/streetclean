@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
     has_one :location
+    
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Virtual attribute for authentication by either email or username
-   attr_accessor :login
+  # Login is a virtual attribute for authentication by either email or username
+   attr_accessor :login, :phone_number, :phone_carrier
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :username
   
@@ -47,6 +48,7 @@ class User < ActiveRecord::Base
     record
   end
   
+  # HTTP Authentication
   def self.find_record(login)
     where({:username => login} | { :email => login}).first
   end

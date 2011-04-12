@@ -1,4 +1,5 @@
 class StreetController < ApplicationController
+  
  #Most(if not all) Helper functions from this file live in app/controllers/application_controller.rb
   
   # User must sign in before using search function
@@ -12,6 +13,10 @@ class StreetController < ApplicationController
   def email
     @user = current_user
     UserMailer.send_next_time(@user).deliver
+  end
+  
+  def text_message
+    #Fill in with stuff needed!
   end
   
 

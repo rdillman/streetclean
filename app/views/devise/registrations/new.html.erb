@@ -15,6 +15,13 @@
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
 
+  <p>Please Enter your phone number like:(Ex. 6504334564)</p>
+  <p><%= f.label :phone_number %><br />
+  <%= f.telephone_field :phone_number %></p>
+
+  <p><%= f.label :phone_carrier %><br />
+  <%= f.text_field :phone_carrier %></p>
+  
   <p><%= f.submit "Sign up" %></p>
 <% end %>
 
