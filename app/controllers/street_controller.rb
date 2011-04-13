@@ -25,7 +25,8 @@ class StreetController < ApplicationController
   end
   
   def text_message
-    #Fill in with stuff needed!
+    @user = current_user
+    UserMailer.send_next_time(@user).deliver
   end
   
 

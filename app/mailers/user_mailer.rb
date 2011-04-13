@@ -5,11 +5,11 @@ class UserMailer < ActionMailer::Base
   # with the following lookup:
   #
   #   en.user_mailer.send_next_time.subject
-  #
+  # Sends text Message to user. Needs to be built into a function
   def send_next_time(user)
     @user = user
     @loc = @user.location
-    mail(:to => "#{user.username} <#{user.email}>", :subject => "Your next clean time")
+    mail(:to => "#{user.username} <#{user.text_number}>", :subject => "Your next clean time")
   end
 
 end

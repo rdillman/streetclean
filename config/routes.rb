@@ -4,6 +4,7 @@ Streetclean::Application.routes.draw do
   get "street/index"
   get "street/show"
   get "street/email"
+  get "street/text_message"
 
   get "locations/locate_car"
   

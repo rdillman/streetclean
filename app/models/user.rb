@@ -12,15 +12,17 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :username, :phone_number, :text_number
   
+  
+  #Needs to be built into a function in the controller!!!
   def email_to_text(phone_carrier, number)
     @user = current_user
-    @user.text_number = number.to_s
+    @user.phone_number = number.to_s
     if phone_carrier == "Version"
-      @user.text_number<<"@vtext.com"
+      @user.phone_carrier<<"@vtext.com"
     elsif phone_carrier == "ATT"
-      @user.text_number<<"@txt.att.net" 
+      @user.phone_carrier<<"@txt.att.net" 
     elsif phone_carrier == "TMobile"
-      @user.text_number<<"@tmomail.net"
+      @user.phone_carrier<<"@tmomail.net"
     else
       puts "FUCK Phone To Email"
     end
