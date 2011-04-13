@@ -8,9 +8,24 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Login is a virtual attribute for authentication by either email or username
-   attr_accessor :login, :phone_number, :phone_carrier
+   attr_accessor :login, :phone_carrier, :email_to_text
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :username
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :username, :phone_number, :text_number
+  
+  def email_to_text(phone_carrier, number)
+    @user = current_user
+    @user.text_number = number.to_s
+    if phone_carrier == "Version"
+      @user.text_number<<"@vtext.com"
+    elsif phone_carrier == "ATT"
+      @user.text_number<<"@txt.att.net" 
+    elsif phone_carrier == "TMobile"
+      @user.text_number<<"@tmomail.net"
+    else
+      puts "FUCK Phone To Email"
+    end
+    @user.save!
+  end
   
   # Functions for allowing Username or Email sign in as one thing.
   protected
