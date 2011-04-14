@@ -12,6 +12,23 @@
 
 ActiveRecord::Schema.define(:version => 20110413203626) do
 
+  create_table "blocks", :force => true do |t|
+    t.string  "side"
+    t.integer "top"
+    t.integer "bottom"
+    t.string  "dir"
+    t.integer "ct_id"
+    t.integer "nhood_id"
+    t.integer "street_id"
+  end
+
+  create_table "cts", :force => true do |t|
+    t.string "wday"
+    t.string "start"
+    t.string "stop"
+    t.string "boolyuns"
+  end
+
   create_table "locations", :force => true do |t|
     t.integer  "addr"
     t.string   "name"
@@ -22,22 +39,13 @@ ActiveRecord::Schema.define(:version => 20110413203626) do
     t.datetime "updated_at"
   end
 
+  create_table "nhoods", :force => true do |t|
+    t.string "nhood"
+  end
+
   create_table "streets", :force => true do |t|
-    t.string  "streetname"
-    t.string  "rl"
-    t.integer "bottoml"
-    t.integer "topl"
-    t.integer "bottomr"
-    t.integer "topr"
-    t.string  "day"
-    t.string  "start"
-    t.string  "finish"
-    t.boolean "wk1"
-    t.boolean "wk2"
-    t.boolean "wk3"
-    t.boolean "wk4"
-    t.boolean "wk5"
-    t.boolean "holiday"
+    t.string "streetname"
+    t.string "suffix"
   end
 
   create_table "users", :force => true do |t|

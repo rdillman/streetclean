@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
     else
       puts "FUCK Phone To Email"
     end
+    debugger
     @user.save!
   end
   

@@ -1,4 +1,4 @@
 <!-- ALL OF THESE HELPER FUNCTIONS LIVE IN /app/helpers/street_helper.rb -->
-<%= start_n_stop_times(@result,@warning) %>
+<%= start_n_stop_times(@loc,@b,@s,@num) %>
 <br>
 <%=button_to "Text Message", street_text_message_path, :method => "get"%>

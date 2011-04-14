@@ -19,9 +19,9 @@
   <%= f.telephone_field :phone_number %></p>
 
   <p><%= f.label :phone_carrier %><br />
-  <%= select_tag "phone_carrier", options_for_select([ "ATT", "Verison", "TMobile", "" ], "") %>
-
-  <p><%= f.submit "Sign up" %></p>
+	<%= select_tag(:phone_carrier, options_for_select([['ATT', 1], ['VERIZON', 2]])) %>  </p>
+	
+<p><%= f.submit "Sign up" %></p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

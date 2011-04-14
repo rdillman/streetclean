@@ -1,4 +1,8 @@
 Streetclean::Application.routes.draw do
+  get "street/phone_carrier"
+
+  get "street/number"
+
   devise_for :users, :path_name => { :sign_up => "register"}
 
   get "street/index"
