@@ -8,27 +8,28 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Login is a virtual attribute for authentication by either email or username
-   attr_accessor :login, :phone_carrier, :email_to_text
+   attr_accessor :login, :username
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :username, :phone_number, :text_number
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :username, 
+                  :phone_number, :carrier
   
   
   #Needs to be built into a function in the controller!!!
-  def email_to_text(phone_carrier, number)
-    @user = current_user
-    @user.phone_number = number.to_s
-    if phone_carrier == "Version"
-      @user.phone_carrier<<"@vtext.com"
-    elsif phone_carrier == "ATT"
-      @user.phone_carrier<<"@txt.att.net" 
-    elsif phone_carrier == "TMobile"
-      @user.phone_carrier<<"@tmomail.net"
-    else
-      puts "FUCK Phone To Email"
-    end
-    debugger
-    @user.save!
-  end
+  # def email_to_text(phone_carrier, number)
+  #   @user = current_user
+  #   @user.phone_number = number.to_s
+  #   if phone_carrier == "Version"
+  #     @user.phone_carrier<<"@vtext.com"
+  #   elsif phone_carrier == "ATT"
+  #     @user.phone_carrier<<"@txt.att.net" 
+  #   elsif phone_carrier == "TMobile"
+  #     @user.phone_carrier<<"@tmomail.net"
+  #   else
+  #     puts "FUCK Phone To Email"
+  #   end
+  #   debugger
+  #   @user.save!
+  # end
   
   # Functions for allowing Username or Email sign in as one thing.
   protected

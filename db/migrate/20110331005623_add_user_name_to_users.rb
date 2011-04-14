@@ -1,6 +1,6 @@
 class AddUserNameToUsers < ActiveRecord::Migration
   def self.up
-    add_column :users, :username, :phone_number, :phone_carrier, :string
+    add_column :users, :username, :phone_number
   end
 
   def self.down

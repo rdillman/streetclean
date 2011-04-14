@@ -8,15 +8,15 @@ class StreetController < ApplicationController
   def index
   end
 
-  def phone_carrier
-    @user = current_user
-    @user.email_to_text(params[:phone_carrier, :phone_number])    
-  end
-  
-  def number
-    @user = current_user
-    @user.email_to_text(params[:phone_carrier, :phone_number])
-  end
+  # def phone_carrier
+  #   @user = current_user
+  #   @user.email_to_text(params[:phone_carrier, :phone_number])    
+  # end
+  # 
+  # def number
+  #   @user = current_user
+  #   @user.email_to_text(params[:phone_carrier, :phone_number])
+  # end
   
   def email
     @user = current_user
