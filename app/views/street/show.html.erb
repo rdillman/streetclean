@@ -1,4 +1,4 @@
 <!-- ALL OF THESE HELPER FUNCTIONS LIVE IN /app/helpers/street_helper.rb -->
-<%= start_n_stop_times(@loc,@b,@s,@num) %>
+<%=@pretty_str%>
 <br>
-<%=button_to "Text Message", street_text_message_path, :method => "get"%>
+<%=button_to "Text Me These Times!", street_text_message_path, :method => "get"%>

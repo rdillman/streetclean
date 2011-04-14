@@ -10,7 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20110414212047) do
+=======
+ActiveRecord::Schema.define(:version => 20110414201836) do
+>>>>>>> 3ad631f493249ae017704cbf7a074eacd396d88f
 
   create_table "blocks", :force => true do |t|
     t.string  "side"
@@ -31,9 +35,11 @@ ActiveRecord::Schema.define(:version => 20110414212047) do
 
   create_table "locations", :force => true do |t|
     t.integer  "addr"
-    t.string   "name"
-    t.string   "start"
-    t.string   "stop"
+    t.integer  "block_num"
+    t.string   "streetname"
+    t.string   "direction"
+    t.time     "start"
+    t.time     "stop"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

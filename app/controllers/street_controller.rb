@@ -31,32 +31,26 @@ class StreetController < ApplicationController
 
   def show
     #Format User Input from Search Bar:  101 Market St -> [101, Market, St]
-    sid, @num = find_street(params[:q])
-    @s = Street.find(sid)
-    next_times,b_id = @s.next_clean_time(@num)
-    @b = Block.find(b_id)
-    #If record will not be found
+    sid, num = find_street(params[:q])
+    s = Street.find(sid)
+    next_times,b_id = s.next_clean_time(num)
+    b = Block.find(b_id)
+    
     
     @user = current_user
     @loc = @user.location
     if !@loc
       @loc = Location.create(:user_id => @user.id)
-      @loc.save
     end
-    @loc.addr = @num
-   # @loc.name = name
-    @loc.start = next_times[0]
-    @loc.stop = next_times[1]
-    @loc.updated_at = Time.now
-    @user.save!
-    @loc.save!
+    street_str = s.streetname<<" "<<s.suffix
+    @loc.update(num,b.bottom,street_str,b.dir,next_times[0],next_times[1])
+    @pretty_str = @loc.pretty_string 
+
     
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @loc }
-      format.xml  { render :xml => @b }
-      format.xml  { render :xml =>  @s }
-      format.xml  { render :xml => @num }
+      format.xml  { render :xml => @pretty_str }
+
     end
   end
   private
@@ -64,8 +58,7 @@ class StreetController < ApplicationController
   def fuck
     return 0
   end
-  
-  
+    
   def find_street(str)
     str.upcase!
     splt_str= str.split
