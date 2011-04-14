@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Login is a virtual attribute for authentication by either email or username
-   attr_accessor :login
+   attr_accessor :login, :username
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :username, 
                   :phone_number, :carrier

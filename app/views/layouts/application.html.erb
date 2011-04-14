@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Street Clean</title>
+  <title>Ticket.Cricket</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -35,6 +35,9 @@
 				<% else %>
 					<%= link_to "Sign Up ", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
 				<% end %>
+				<p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+       
 			</div>
 			<div id="links">
 				<%= link_to "About Us", layouts_about_us_path%>	
@@ -49,7 +52,7 @@
 
 	<hr style="border-width:0px;margin:0px;" />
 	<center>
-		All this created by The Dillman and RiverMan
+		All this created by The Dillman and RiverMan 2011
 	</center>
 
 	</body>
