@@ -13,25 +13,22 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :username, 
                   :phone_number, :carrier
   
-  
-  #Needs to be built into a function in the controller!!!
-  # def email_to_text(phone_carrier, number)
-  #   @user = current_user
-  #   @user.phone_number = number.to_s
-  #   if phone_carrier == "Version"
-  #     @user.phone_carrier<<"@vtext.com"
-  #   elsif phone_carrier == "ATT"
-  #     @user.phone_carrier<<"@txt.att.net" 
-  #   elsif phone_carrier == "TMobile"
-  #     @user.phone_carrier<<"@tmomail.net"
-  #   else
-  #     puts "FUCK Phone To Email"
-  #   end
-  #   debugger
-  #   @user.save!
-  # end
-  
   # Functions for allowing Username or Email sign in as one thing.
+  
+  def text_address
+    str = self.phone_number
+    if self.carrier == "Verizon"
+      str<<"@vtext.com"
+    elsif self.carrier == "ATT"
+      str<<"@txt.att.net" 
+    elsif self.carrier == "T-Mobile"
+      str<<"@tmomail.net"
+    else
+      str="Fuck"
+    end
+  end
+  
+  
   protected
   
   def self.find_for_database_authentication(warden_conditions)

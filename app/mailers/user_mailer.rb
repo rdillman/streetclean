@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
   def send_next_time(user)
     @user = user
     @loc = @user.location
-    mail(:to => "#{user.username} <#{user.text_number}>", :subject => "Your next clean time")
+    mail(:to => "#{user.username} <#{user.text_address}>", :subject => "Your next clean time")
   end
 
 end

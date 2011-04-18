@@ -3,20 +3,15 @@ class StreetController < ApplicationController
  #Most(if not all) Helper functions from this file live in app/controllers/application_controller.rb
   
   # User must sign in before using search function
-  before_filter :authenticate_user!, :except => [:index]
+  # Commenting out for testing!
+  # before_filter :authenticate_user!, :except => [:index]
   
   def index
   end
-
-  # def phone_carrier
-  #   @user = current_user
-  #   @user.email_to_text(params[:phone_carrier, :phone_number])    
-  # end
-  # 
-  # def number
-  #   @user = current_user
-  #   @user.email_to_text(params[:phone_carrier, :phone_number])
-  # end
+  
+  def text_message_test
+    
+  end
   
   def email
     @user = current_user
@@ -53,6 +48,7 @@ class StreetController < ApplicationController
 
     end
   end
+  
   private
   
   def fuck
