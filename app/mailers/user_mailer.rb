@@ -8,8 +8,9 @@ class UserMailer < ActionMailer::Base
   # Sends text Message to user. Needs to be built into a function
   def send_next_time(user)
     @user = user
-    @loc = @user.location
-    mail(:to => "#{user.username} <#{user.text_address}>", :subject => "Your next clean time")
+    @loc =  @user.location
+    @pretty_string = @loc.pretty_string
+    mail(:to =>"<#{user.text_address}>", :subject => "Your next clean time")
   end
 
 end

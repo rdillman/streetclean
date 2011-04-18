@@ -5,8 +5,8 @@ class CreateLocations < ActiveRecord::Migration
       t.integer :block_num
       t.string :streetname
       t.string :direction
-      t.time :start
-      t.time :stop
+      t.string :start
+      t.string :stop
       t.references :user
 
       t.timestamps

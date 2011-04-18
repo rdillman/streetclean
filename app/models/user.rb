@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     str = self.phone_number
     if self.carrier == "Verizon"
       str<<"@vtext.com"
-    elsif self.carrier == "ATT"
+    elsif self.carrier == "AT&T"
       str<<"@txt.att.net" 
     elsif self.carrier == "T-Mobile"
       str<<"@tmomail.net"

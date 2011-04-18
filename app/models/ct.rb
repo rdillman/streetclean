@@ -137,10 +137,9 @@ class Ct < ActiveRecord::Base
     #Replace "HOL" value with next holiday
     if (self.wday == "HOL")
       hol = self.class.get_next_holiday(now)
-      start = Chronic.parse(hol<<" "<<self.start)
+      start = Chronic.parse(hol+" "+self.start)
       stop =  Chronic.parse(hol<<" "<<self.stop)
     end
-    
     if self.non_weekly? == false
       #TBD - Add Warning Flag
       if start.wday == now.wday && ((stop-1.week) > now)

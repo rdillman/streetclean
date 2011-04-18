@@ -9,7 +9,8 @@ class StreetController < ApplicationController
   def index
   end
   
-  def text_message_test
+  def doubles
+    
     
   end
   
@@ -26,26 +27,61 @@ class StreetController < ApplicationController
 
   def show
     #Format User Input from Search Bar:  101 Market St -> [101, Market, St]
-    sid, num = find_street(params[:q])
-    s = Street.find(sid)
-    next_times,b_id = s.next_clean_time(num)
-    b = Block.find(b_id)
-    
-    
-    @user = current_user
-    @loc = @user.location
-    if !@loc
-      @loc = Location.create(:user_id => @user.id)
-    end
-    street_str = s.streetname<<" "<<s.suffix
-    @loc.update(num,b.bottom,street_str,b.dir,next_times[0],next_times[1])
-    @pretty_str = @loc.pretty_string 
+    double_trouble = FALSE
+    s, num = Street.find_street(params[:q])
+    #If Street not Found
+    if (s == -1)
+      double_trouble = TRUE
+      @usr_qry = params[:q]
+      respond_to do |format|
+        format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
+        format.xml {render :xml => @usr_qry}
+      end
+    elsif (s.length >1)
+      fuck,suff = Street.pop_suff(params[:q])
+      if Street.valid_suffix?(suff)
+        s = Street.where("streetname =? AND suffix = ?", s[0].streetname,suff)
+      else
+        @possible_streets = Array.new
+        s.each do |x|
+          tmp_str=num.to_s
+          tmp_str<<" "
+          tmp_str<<x.streetname
+          tmp_str<<" "
+          tmp_str<<x.suffix
+          @possible_streets << tmp_str
+        end
+        double_trouble = TRUE
+        respond_to do |format|
+          format.html {render :file => "#{Rails.root}/public/too_many_streets.html.erb"}
+          format.xml {render :xml => @possible_streets}
+        end
+      end
+    else
+  
+      sid = s[0].id
+      s = Street.find(sid)
+      next_times,b_id = s.next_clean_time(num)
+      b = Block.find(b_id)
 
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @pretty_str }
 
+      @user = current_user
+      @loc = @user.location
+      if !@loc
+        @loc = Location.create(:user_id => @user.id)
+      end
+      street_str = s.streetname<<" "<<s.suffix
+      @loc.updateloc(num,b.bottom,street_str,b.dir,next_times[0].to_time,next_times[1].to_time)
+      @loc.save!
+      @pretty_str = @loc.pretty_string 
+
+
+      if !double_trouble
+        respond_to do |format|
+            format.html # show.html.erb
+            format.xml  { render :xml => @pretty_str }
+        end
+      end
     end
   end
   
@@ -55,34 +91,5 @@ class StreetController < ApplicationController
     return 0
   end
     
-  def find_street(str)
-    str.upcase!
-    splt_str= str.split
 
-    #Get address number and change it to integer
-    num = splt_str[0]
-    num = num.to_i
-    
-
-    # seperate the streetname and suffix from the rest of theinput
-    # and join them all together
-    len = splt_str.length
-    name = splt_str.pop(len-1)
-    name = name.join(" ")
-    s = Street.where("streetname =?",name)
-    if(s == [])
-      name = pop_suff(name)
-      s = Street.where("streetname =?",name)
-      if(s == nil)
-        #FUCK
-      end
-    end
-    return s[0].id,num
-  end
-
-  def pop_suff(name)
-    split = name.split
-    split.pop
-    split
-  end
 end
