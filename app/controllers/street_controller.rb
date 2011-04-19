@@ -37,7 +37,9 @@ class StreetController < ApplicationController
         format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
         format.xml {render :xml => @usr_qry}
       end
-    elsif (s.length >1)
+    end
+    if (s != -1 && s.length >1)
+      debugger
       fuck,suff = Street.pop_suff(params[:q])
       if Street.valid_suffix?(suff)
         s = Street.where("streetname =? AND suffix = ?", s[0].streetname,suff)
@@ -57,8 +59,10 @@ class StreetController < ApplicationController
           format.xml {render :xml => @possible_streets}
         end
       end
-    else
-  
+    end
+    
+    if(!double_trouble)
+      debugger
       sid = s[0].id
       s = Street.find(sid)
       next_times,b_id = s.next_clean_time(num)
@@ -72,17 +76,14 @@ class StreetController < ApplicationController
       end
       street_str = s.streetname<<" "<<s.suffix
       @loc.updateloc(num,b.bottom,street_str,b.dir,next_times[0].to_time,next_times[1].to_time)
-      @loc.save!
       @pretty_str = @loc.pretty_string 
 
-
-      if !double_trouble
-        respond_to do |format|
-            format.html # show.html.erb
-            format.xml  { render :xml => @pretty_str }
-        end
+      respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @pretty_str }
       end
     end
+  
   end
   
   private

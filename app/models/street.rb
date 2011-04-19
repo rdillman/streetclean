@@ -9,6 +9,16 @@ class Street < ActiveRecord::Base
     end
   end
   
+  def self.double_choose
+    
+  end
+  
+  def self.get_doubles
+    
+  end
+  
+  
+  
   def self.valid_suffix?(suf)
     suffixes =["ST","AVE" ,"WAY" ,"BLVD", "PL", "CT", "DR", "TER", "LN", "ALY", "PARK", "RD", "MAR", "HWY", "CIR", "EXPY", "PLAYA", "PLZ", "ARTS" ,"TUNL" ,"SORA", "EMBARCADERO"]
     suffixes.include?(suf)
