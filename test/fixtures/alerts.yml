@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  mesage: MyString
+  send_time: 1
+  user: 
+
+two:
+  mesage: MyString
+  send_time: 1
+  user: 

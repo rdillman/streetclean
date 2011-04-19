@@ -1,0 +1,6 @@
+We found too many results for your search. 
+Which of these did you mean?<br>
+
+<%@possible_streets.each do |street|%>
+	<%=link_to street, :commit=>"Search", :action =>"show", :q=>street, :controller=>"street" %><br>
+<%end%>

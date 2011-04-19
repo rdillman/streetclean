@@ -1,4 +1,8 @@
 Streetclean::Application.routes.draw do
+  get "alert/create"
+
+  get "alert/cancel"
+
   get "street/phone_carrier"
 
   get "street/number"
@@ -15,6 +19,7 @@ Streetclean::Application.routes.draw do
   # Links
   get "layouts/about_us"
   get "layouts/contact_us"
+  
   
   
 
