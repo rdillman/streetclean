@@ -4,7 +4,7 @@ class StreetController < ApplicationController
   
   # User must sign in before using search function
   # Commenting out for testing!
-  before_filter :authenticate_user!, :except => [:index]
+  before_filter :authenticate_user!, :except => [:intro]
   
   def index
   end
