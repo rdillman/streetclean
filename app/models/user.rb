@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     has_one :location
+    has_many :alert
     
   
   # Include default devise modules. Others available are:

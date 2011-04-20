@@ -2,6 +2,8 @@ Streetclean::Application.routes.draw do
   get "alert/create"
 
   get "alert/cancel"
+  
+  get "alert/show"
 
   get "street/phone_carrier"
 

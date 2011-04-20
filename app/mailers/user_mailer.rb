@@ -12,5 +12,10 @@ class UserMailer < ActionMailer::Base
     @pretty_string = @loc.pretty_string
     mail(:to =>"<#{user.text_address}>", :subject => "Your next clean time")
   end
-
+  
+  def send_alert(alert)
+    user = alert.user
+    @alarm_message = alert.alarm_message
+    mail(:to =>"<#{user.text_address}>", :subject => "TicketCricket Alert!")
+  end
 end

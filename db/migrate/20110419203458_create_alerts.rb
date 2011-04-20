@@ -4,7 +4,7 @@ class CreateAlerts < ActiveRecord::Migration
       t.string      :location
       t.string      :clean_time 
       t.string      :message
-      t.integer     :send_time
+      t.string      :send_time
       t.references  :user
       t.references  :ct
 

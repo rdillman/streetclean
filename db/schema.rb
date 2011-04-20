@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20110419203458) do
     t.string   "location"
     t.string   "clean_time"
     t.string   "message"
-    t.integer  "send_time"
+    t.string   "send_time"
     t.integer  "user_id"
     t.integer  "ct_id"
     t.datetime "created_at"
