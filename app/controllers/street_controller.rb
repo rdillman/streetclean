@@ -39,7 +39,6 @@ class StreetController < ApplicationController
       end
     end
     if (s != -1 && s.length >1)
-      debugger
       fuck,suff = Street.pop_suff(params[:q])
       if Street.valid_suffix?(suff)
         s = Street.where("streetname =? AND suffix = ?", s[0].streetname,suff)

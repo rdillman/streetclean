@@ -7,7 +7,7 @@ class Alert < ActiveRecord::Base
     now = Time.now
     alarms.each do |x|
       time = Chronic.parse(x.send_time)
-      if(time-now < 1.hour)
+      if(time-now < (1.hour+5.minutes))
         UserMailer.send_alert(x).deliver
         x.destroy
       end
@@ -28,7 +28,7 @@ class Alert < ActiveRecord::Base
     next_time = Chronic.parse(self.clean_time)
     warning ="WARNING! "
     warning << self.location
-    warning << " will be swept in thirty minutes, starting at "
+    warning << " will be swept in one hour, starting at "
     warning << next_time.strftime("%I:%M%p")<<". - TheTicketCricket"
   end
   
