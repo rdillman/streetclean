@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414212047) do
+ActiveRecord::Schema.define(:version => 20110419203458) do
+
+  create_table "alerts", :force => true do |t|
+    t.string   "location"
+    t.string   "clean_time"
+    t.string   "message"
+    t.integer  "send_time"
+    t.integer  "user_id"
+    t.integer  "ct_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blocks", :force => true do |t|
     t.string  "side"

@@ -39,20 +39,20 @@
        <p class="alert"><%= alert %></p>
        
 			</div>
-			<div id="links">
-				<%= link_to "About Us", layouts_about_us_path%>	
-				<%= link_to "Contact Us", layouts_contact_us_path %>	
-			</div>
 		</div>
-		<div id="logo">
-			<p>Ticket.Cricket</p>
-		</div>
+		<!---<div id="logo">
+			
+		#</div> -->
 
 	<%= yield %>
 
 	<hr style="border-width:0px;margin:0px;" />
 	<center>
-		All this created by The Dillman and RiverMan 2011
+		All this created by The Dillman and RiverMan 2011<b>
+		<div id="links">
+				<center><%= link_to "About Us", layouts_about_us_path%>	
+				<%= link_to "Contact Us", layouts_contact_us_path %>	</center>
+			</div>
 	</center>
 
 	</body>

@@ -4,7 +4,7 @@ class StreetController < ApplicationController
   
   # User must sign in before using search function
   # Commenting out for testing!
-  # before_filter :authenticate_user!, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index]
   
   def index
   end
@@ -35,11 +35,10 @@ class StreetController < ApplicationController
       @usr_qry = params[:q]
       respond_to do |format|
         format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
-        format.xml {render :xml => @usr_qry}
+        format.xml {render :xml => @usr_qry} 
       end
     end
     if (s != -1 && s.length >1)
-      debugger
       fuck,suff = Street.pop_suff(params[:q])
       if Street.valid_suffix?(suff)
         s = Street.where("streetname =? AND suffix = ?", s[0].streetname,suff)
@@ -62,7 +61,6 @@ class StreetController < ApplicationController
     end
     
     if(!double_trouble)
-      debugger
       sid = s[0].id
       s = Street.find(sid)
       next_times,b_id = s.next_clean_time(num)
