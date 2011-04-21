@@ -1,6 +1,5 @@
 class CreateLocations < ActiveRecord::Migration
   def self.up
-    drop_table :locations
     create_table :locations do |t|
       t.integer :addr
       t.integer :block_num
