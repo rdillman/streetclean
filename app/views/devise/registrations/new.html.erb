@@ -4,19 +4,19 @@
   <%= devise_error_messages! %>
 
   <p><%= f.label :username %><br />
-  <%= f.text_field :username %></p>
+  <%= f.text_field :username, :placeholder => "FTPopo" %></p>
 
   <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <%= f.email_field :email, :palceholder => "Ex. theman@gmail.com" %></p>
 
   <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <%= f.password_field :password, :placeholder => "Must be atleast 6 characters" %></p>
 
   <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <%= f.password_field :password_confirmation, :placeholder => "Must be atleast 6 characters"%></p>
 
-  <p>Please Enter your phone number:(Ex. 6504334564)</p>
-  <%= f.telephone_field :phone_number %></p>
+  <p>Please Enter your phone number:</p>
+  <%= f.telephone_field :phone_number,:placeholder => "Ex. 6503739434"%></p>
 
   <p><%= f.label :carrier %><br />
 	<%= f.select :carrier, ["AT&T", "Verizon", "T-Mobile", "Boost"] %>  </p>
