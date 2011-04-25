@@ -28,6 +28,7 @@
 <div id="container1">
 	<body id="body">
 		<div id="user_nav">
+			<%= link_to "HOME", street_index_path%>	
 			<div id="user_sign">
 				<% if user_signed_in? %>
 					Signed In as <%= current_user.email %>. Not you?
