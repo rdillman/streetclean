@@ -7,6 +7,7 @@
 <head>
   <title>Ticket.Cricket</title>
   <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'mobile' if mobile_device?%>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 
@@ -28,6 +29,12 @@
 <div id="container1">
 	<body id="body">
 		<div id="user_nav">
+			<%= link_to "HOME", street_index_path%>
+			<% if mobile_device? %>
+		    	<%= link_to "Full Site", :mobile => 0 %>
+		  	<% else %>
+		    	<%= link_to "Mobile Site", :mobile => 1 %>
+		  	<% end %>	
 			<div id="user_sign">
 				<% if user_signed_in? %>
 					Signed In as <%= current_user.email %>. Not you?

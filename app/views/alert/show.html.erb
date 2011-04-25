@@ -10,6 +10,7 @@
     <td><%= alarm.send_time%></td>
     <td><%= alarm.clean_time %></td>
     <td><%= alarm.location %></td>
+	<td><%=link_to "delete", :controller => "alert", :action => "kill", :q => alarm.id, :method => "get"%>
   </tr>
 <% end %>
 </table>

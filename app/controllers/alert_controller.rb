@@ -17,7 +17,10 @@ class AlertController < ApplicationController
     end
   end
 
-  def cancel
+  def kill
+    alarm_id = params[:q]
+    to_delete = Alert.find(alarm_id)
+    to_delete.destroy
   end
   
   def show
