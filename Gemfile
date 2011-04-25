@@ -14,6 +14,7 @@ gem "mail", "2.2.15"
 
 # Devise Authentication Gem
 gem 'devise'
+gem 'omniauth'
 
 # Use unicorn as the web server
 # gem 'unicorn'

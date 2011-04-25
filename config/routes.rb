@@ -1,4 +1,6 @@
 Streetclean::Application.routes.draw do
+  resources :authentications
+
   get "alert/create"
 
   get "alert/cancel"
@@ -10,6 +12,7 @@ Streetclean::Application.routes.draw do
   get "street/number"
   get "street/intro"
 
+  match 'auth/:provider/callback' => 'authentications#create'
   devise_for :users, :path_name => { :sign_up => "register"}
 
   get "street/index"
@@ -23,7 +26,7 @@ Streetclean::Application.routes.draw do
   get "layouts/about_us"
   get "layouts/contact_us"
   
-  
+  resources :authentications
   
 
   # The priority is based upon order of creation:
