@@ -14,7 +14,10 @@
   <%= f.email_field :email %></p>
 
   <p><%= f.label :carrier %><br />
-	<%= f.select :carrier, ["AT&T", "Verizon"] %>  </p>
+	<%= f.select :carrier, ["AT&T", "Verizon", "T-Mobile"] %>  </p>
+	
+	<p>Please Enter your phone number:</p>
+  <%= f.telephone_field :phone_number,:placeholder => "Ex. 6503739434"%></p>
 
   <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password %></p>
