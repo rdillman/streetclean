@@ -5,10 +5,17 @@
 	text-align: center;
 }
 
+#navbar_side{
+	margin-right: auto;
+	margin-left: auto;
+	width:20%;
+	text-align: center;
+	background-color: #659EC7;
+	
+}
+
 #user_input{
-	border: solid;
-	border-width: 5px;
-	border-color: red;
+
 }
 
 #user_nav{
