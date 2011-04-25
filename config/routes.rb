@@ -1,7 +1,7 @@
 Streetclean::Application.routes.draw do
   get "alert/create"
 
-  get "alert/cancel"
+  get "alert/kill"
   
   get "alert/show"
 
