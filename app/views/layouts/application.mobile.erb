@@ -9,14 +9,12 @@
   </head>
   <body>
     <div class="current">
-      <%- if show_title? -%>
       <div class="toolbar">
         <%= link_to "Back", nil, :class => "back" unless current_page? root_path %>
         <h1><%=h yield(:title) %></h1>
         <%= link_to "Full Site", root_url(:mobile => 0), :class => "button", :rel => "external" %>
         <%= yield(:toolbar) %>
       </div>
-      <%- end -%>
       
       <% unless flash.empty? %>
         <div class="info">
