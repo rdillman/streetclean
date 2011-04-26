@@ -1,0 +1,29 @@
+<%= form_for(@feedback) do |f| %>
+  <% if @feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+      <ul>
+      <% @feedback.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Name" %><br />
+    <%= f.text_field :authorname, :placeholder => "FTPopo" %>
+  </div>
+  <div class="field">
+    <%= f.label "Email Address" %><br />
+    <%= f.text_field :authoremail, :placeholder => "ticketcricket@gmail.com"%>
+  </div>
+  <div class="field" rows="4" cols="40">
+    <%= f.label "Leave your comments!" %><br />
+    <%= f.text_area :authorcomments, :placeholder => "Tell us what you think!"%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

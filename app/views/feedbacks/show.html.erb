@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Authorname:</b>
+  <%= @feedback.authorname %>
+</p>
+
+<p>
+  <b>Authoremail:</b>
+  <%= @feedback.authoremail %>
+</p>
+
+<p>
+  <b>Authorcomments:</b>
+  <%= @feedback.authorcomments %>
+</p>
+
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>
+<%= link_to "HOME", street_index_path%>

@@ -39,7 +39,15 @@ p{
 }
 
 #links{
-	text-align: left;
+	text-align: center;
+}
+
+#feedback_head{
+	text-align: center;
+}
+
+.field{
+	text-align: center;
 }
 
 .button{

@@ -1,4 +1,6 @@
 Streetclean::Application.routes.draw do
+  resources :feedbacks
+
   resources :authentications
 
   get "alert/create"
@@ -25,6 +27,14 @@ Streetclean::Application.routes.draw do
   # Links
   get "layouts/about_us"
   get "layouts/contact_us"
+  get "layouts/feedback"
+  get "layouts/feedback_submit"
+  
+  # Feedback
+  
+  get "feedbacks/index"
+  get "feedbacks/edit"
+  get "feedbacks/new"
   
   resources :authentications
   
