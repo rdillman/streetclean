@@ -58,3 +58,11 @@ p{
 .button{
 	width: 45px;
 }
+
+a{
+	color: #EEC015;
+}
+
+a:visited{
+	color: #EEC015;
+}
