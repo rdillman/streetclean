@@ -3,14 +3,14 @@
 <html>
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag "/jqtouch/jqtouch.min.css", "/jqtouch/themes/apple/theme.min.css" %>
+    <%= stylesheet_link_tag "/jqtouch/jqtouch.min.css", "/jqtouch/themes/jqt/theme.min.css" %>
     <%= javascript_include_tag "/jqtouch/jquery.1.3.2.min.js", "/jqtouch/jqtouch.min.js", "mobile" %>
     <%= yield(:head) %>
   </head>
   <body>
     <div class="current">
       <div class="toolbar">
-        <%= link_to "Back", nil, :class => "back" unless current_page? root_path %>
+        <%= link_to "Back", nil, :class => "back" %>
         <h1><%=h yield(:title) %></h1>
         <%= link_to "Full Site", root_url(:mobile => 0), :class => "button", :rel => "external" %>
         <%= yield(:toolbar) %>

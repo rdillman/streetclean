@@ -9,8 +9,7 @@ class StreetController < ApplicationController
   def index
   end
   
-  def doubles
-    
+  def mobile_home
     
   end
   

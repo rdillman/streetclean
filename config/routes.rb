@@ -19,6 +19,7 @@ Streetclean::Application.routes.draw do
 
   get "street/index"
   get "street/show"
+  get "street/mobile_home"
   get "street/email"
   get "street/text_message"
 
