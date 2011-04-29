@@ -29,7 +29,7 @@
 <div id="container1">
 	<body id="body">
 		<div id="user_nav">
-			<%= link_to image_tag("home.png", :border => 0), {:action => 'index', :controller => 'street'} %>
+			<%= link_to image_tag("home.png", :border => 0), street_index_path %>
 			<% if mobile_device? %>
 		    	<%= link_to "Full Site", :mobile => 0 %>
 		  	<% else %>
