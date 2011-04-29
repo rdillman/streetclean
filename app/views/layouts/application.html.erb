@@ -29,11 +29,11 @@
 <div id="container1">
 	<body id="body">
 		<div id="user_nav">
-			<%= link_to "HOME", street_index_path%>
+			<%= link_to image_tag("home.png", :border => 0), {:action => 'index', :controller => 'street'} %>
 			<% if mobile_device? %>
 		    	<%= link_to "Full Site", :mobile => 0 %>
 		  	<% else %>
-		    	<%= link_to "Mobile Site", :mobile => 1 %>
+		    	<%= link_to image_tag("mobile_site.png", :border => 0), :mobile => 1 %>
 		  	<% end %>	
 			<div id="user_sign">
 				<% if user_signed_in? %>
@@ -50,9 +50,9 @@
 		<!---<div id="logo">
 			
 		#</div> -->
-
-	<%= yield %>
-
+		<div id="yeild_page">
+			<%= yield %>
+		</div>
 	<hr style="border-width:0px;margin:0px;" />
 	<center>
 		All this created by The Dillman and RiverMan 2011<b>
