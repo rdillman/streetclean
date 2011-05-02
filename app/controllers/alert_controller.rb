@@ -2,7 +2,11 @@ class AlertController < ApplicationController
   def create
     @user = current_user
     alert = make_alert(@user)
-    @message = alert.create_message
+    if alert == -1
+      @message = "An Alert Already Exists"
+    else
+      @message = alert.create_message
+    end
     
     #Uncomment for Alert Testing
     #UserMailer.send_alert(alert).deliver    
@@ -38,12 +42,25 @@ class AlertController < ApplicationController
     @user = current_user
     @loc = @user.location
     if @loc
-      a = Alert.create
-      a.set_alarm(@loc)
-      return a
+      if alert_already_exists?(@loc)
+        return -1
+      else
+        a = Alert.create
+        a.set_alarm(@loc)
+        return a
+      end
     else
       return nil
     end
     a
+  end
+  
+  def alert_already_exists?(loc)
+    str = "the "<<loc.block_num.to_s<<" block of "<<loc.streetname<<" "<<loc.direction
+    if (Alert.where("location =? AND user_id =? AND clean_time =?", str, loc.user_id,loc.start)==[])
+      return false
+    else
+      return true
+    end
   end
 end
