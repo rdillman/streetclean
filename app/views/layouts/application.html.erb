@@ -26,41 +26,38 @@
 </script>
 
 </head>
-<div id="container1">
+
+<div id="container">
 	<body id="body">
 		<div id="user_nav">
-			<%= link_to image_tag("home.png", :border => 0), street_index_path %>
+			<%= link_to "Home", street_index_path %>
 			<% if mobile_device? %>
 		    	<%= link_to "Full Site", :mobile => 0 %>
 		  	<% else %>
-		    	<%= link_to image_tag("mobile_site.png", :border => 0), :mobile => 1 %>
+		    	<%= link_to "Mobile Site", :mobile => 1 %>
 		  	<% end %>	
 			<div id="user_sign">
 				<% if user_signed_in? %>
 					Signed In as <%= current_user.username %>. Not you?
 					<%= link_to "Sign Out", destroy_user_session_path %> Or <%= link_to "Edit User", edit_user_registration_path %>
 				<% else %>
-					<%= link_to "Sign Up", new_user_registration_path %> Or <%= link_to "Sign In", new_user_session_path %>
+					<%= link_to "Sign Up", new_user_registration_path %>
 				<% end %>
-				<p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-       
+			<%= link_to "About Us", layouts_about_us_path%>	
+			<%= link_to "Contact Us", layouts_contact_us_path %>
+			<%= link_to "Feedback", feedbacks_new_path %>
 			</div>
 		</div>
 		<!---<div id="logo">
 			
 		#</div> -->
-		<div id="yeild_page">
+		<div id="yield_page">
 			<%= yield %>
 		</div>
 	<hr style="border-width:0px;margin:0px;" />
 	<center>
 		All this created by The Dillman and RiverMan 2011<b>
-		<div id="links">
-				<%= link_to "About Us", layouts_about_us_path%>	
-				<%= link_to "Contact Us", layouts_contact_us_path %>
-				<%= link_to "Feedback", feedbacks_new_path %>
-			</div>
+	
 	</center>
 
 	</body>

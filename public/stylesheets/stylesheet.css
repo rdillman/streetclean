@@ -6,27 +6,24 @@
 }
 
 #user_input{
-
+	text-align: center;
 }
 
 #user_nav{
 	color: #06275D;
-	background-color: #06275D;
+	background-color: white;
 	padding: 0px 0px 10px 0px;
 }
 
 #user_sign{
 	text-align: right;
 	float: right;
+	color: blue;
 }
 
 #body{
 	margin: 0px;
-}
-
-#container1{
-	background-color: #6C7A7D;
-	
+	background-color: #06275D;
 }
 
 #logo{
@@ -35,7 +32,7 @@
 	margin: 0px;
 }
 
-#yeild_page{
+#yield_page{
 	text-align: center;
 }
 
@@ -56,7 +53,7 @@ p{
 }
 
 .button{
-	width: 45px;
+	width: 100px;
 }
 
 a{
@@ -65,4 +62,42 @@ a{
 
 a:visited{
 	color: #EEC015;
+}
+
+.form_box{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	width: 300px;
+	padding:40 20 80 20;
+	background: white;
+	border: 12px solid black;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	
+}
+
+.form_box .form_border{
+	border: 12px solid #EEC015;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	filter:alpha(opacity=50); opacity: 0.5; -moz-opacity:0.5;
+}
+
+input{
+	margin-bottom: 10px;
+}
+
+label{
+	
+}
+
+#user_submit{
+	font-size: 150%;
+	font-weight: bold;
+	-webkit-appearance: none;
+	background: #EEC015;
+	margin-top: 10px;
+	padding: 10 30 10 30;
+	width: 175px;
 }
