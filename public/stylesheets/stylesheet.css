@@ -21,6 +21,14 @@
 	color: blue;
 }
 
+#footer{
+	color: white;
+}
+
+#pretty_str{
+	color: white;
+}
+
 #body{
 	margin: 0px;
 	background-color: #06275D;
@@ -38,6 +46,7 @@
 
 p{
 	margin: 0px;
+	color: white;
 }
 
 #links{
