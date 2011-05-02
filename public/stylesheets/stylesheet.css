@@ -23,10 +23,11 @@
 
 #body{
 	margin: 0px;
+	background-color: #6C7A7D;
 }
 
 #container1{
-	background-color: #6C7A7D;
+	
 	
 }
 
@@ -36,7 +37,7 @@
 	margin: 0px;
 }
 
-#yeild_page{
+#yield_page{
 	text-align: center;
 }
 
@@ -66,4 +67,22 @@ a{
 
 a:visited{
 	color: #EEC015;
+}
+
+.form_box{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	width: 300px;
+	padding:20 20 80 20;
+	background: white;
+	border: 12px solid black;
+	border-radius: 15px;
+	
+}
+
+.form_box .form_border{
+	border: 12px solid black;
+	border-radius: 15px;
+	filter:alpha(opacity=50); opacity: 0.5; -moz-opacity:0.5;
 }
