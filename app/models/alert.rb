@@ -7,7 +7,7 @@ class Alert < ActiveRecord::Base
     now = Time.now
     alarms.each do |x|
       time = Chronic.parse(x.send_time)
-      if(time-now < (1.hour+5.minutes))
+      if(time-now < 5.minutes)
         UserMailer.send_alert(x).deliver
         x.destroy
       end
