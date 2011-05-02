@@ -38,7 +38,7 @@ class Alert < ActiveRecord::Base
     message << self.location
     message <<" which begins at "
     message << next_time.strftime("%I:%M%p")
-    message <<". Your alarm will be sent thirty minutes before the start time."
+    message <<". Your alarm will be sent one hour before the start time."
   end
   
 end
