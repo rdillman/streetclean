@@ -34,14 +34,14 @@
 			<%= link_to "HOME", street_index_path %> | 
 			<%= link_to "ALERTS", alert_show_path %> | 
 			<% if mobile_device? %>
-		    	<%= link_to "Full Site", :mobile => 0 %>
+		    	<%= link_to "FULL SITE", :mobile => 0 %>
 		  	<% else %>
 		    	<%= link_to "Mobile Site", :mobile => 1 %>
 		  	<% end %> | 
 			<% if user_signed_in? %>
-				<%= link_to "Sign Out", destroy_user_session_path %> | <%= link_to "Edit User", edit_user_registration_path %>
+				<%= link_to "SIGN OUT", destroy_user_session_path %> 
 			<% else %>
-				<%= link_to "Sign Up", new_user_registration_path %>
+				<%= link_to "SIGN UP", new_user_registration_path %>
 			<% end %>
 		</div>
 		<!---<div id="logo">

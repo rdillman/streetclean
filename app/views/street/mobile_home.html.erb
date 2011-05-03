@@ -1,0 +1,15 @@
+<div class="form_box">
+	<!--<div id="ticket_photo">
+		<%= image_tag "parking_ticket.jpg", :alt => 'Parking Ticket!' %>
+	</div> -->
+	<div id="user_input">
+		<p>Where are you parked?</p>
+		<p>(Ex. 3180 19th St or 3180 19th)</p>
+		<p>
+		<%= form_tag("/street/show/", :placeholder => "190 19th st", :method => "get") do %>
+			  <%= text_field_tag(:q) %><br />
+			  <%= submit_tag("Search") %>
+			<% end %>
+		</p>
+	</div>
+</div >
