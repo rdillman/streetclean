@@ -34,10 +34,10 @@
 
 			<%= link_to "Home", street_index_path %>
 			<% if mobile_device? %>
-		    <%= link_to "Full Site", :mobile => 0 %>
-		  <% else %>
-		    <%= link_to "Mobile Site", :mobile => 1 %>
-		  <% end %>
+		    	<%= link_to "Full Site", :mobile => 0 %>
+		  	<% else %>
+		    	<%= link_to "Mobile Site", :mobile => 1 %>
+		  	<% end %>
 
 			<%= link_to "See All Alarms", alert_show_path %>
 
