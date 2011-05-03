@@ -1,0 +1,13 @@
+<div class="container">
+	<div id="user_input">
+		
+		<p><h1>Where are you parked?</h1></p>
+		<p><h2>(Ex. 3180 19th St or 3180 19th)</h2></p>
+		<p>
+		<%= form_tag("/street/show/", :method => "get") do %>
+			  <%= text_field_tag(:q) %>
+			  <%= submit_tag("SEARCH") %>
+			<% end %>
+		</h1></p>
+	</div>
+</div >
