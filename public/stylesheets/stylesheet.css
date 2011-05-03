@@ -11,8 +11,8 @@
 
 #user_nav{
 	color: #06275D;
-	background-color: white;
-	padding: 0px 0px 10px 0px;
+	background-color: black;
+	padding: 10px 10px 10px 10px;
 }
 
 #user_sign{
@@ -23,6 +23,7 @@
 
 #footer{
 	color: white;
+	padding: 10px 10px 10px 10px;
 }
 
 #pretty_str{
