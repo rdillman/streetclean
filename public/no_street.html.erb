@@ -1,7 +1,8 @@
  <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
+<p>
 We're sorry but we couldn't find any results for your search : <%=@usr_qry%><br>
 Please Search Again
-<p>
+<br />
 <%= form_tag("/street/show/", :method => "get") do %>
 	  <%= text_field_tag(:q) %>
 	  <%= submit_tag("Search") %>
