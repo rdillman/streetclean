@@ -22,8 +22,14 @@
 }
 
 #footer{
-	color: white;
+    position: absolute;
+    bottom:0;
+    width:100%;
+    text-align: center;
+	color: #EEC015;
 	padding: 10px 10px 10px 10px;
+    background-color: black;
+    
 }
 
 #pretty_str{
@@ -78,6 +84,7 @@ a:visited{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 40px;
+    margin-bottom: 40px;
 	width: 300px;
 	padding:40 20 80 20;
 	background: white;
