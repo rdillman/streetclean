@@ -27,11 +27,12 @@
 </script>
 
 </head>
+<body id="body">
 <div id="container">
 	<body id="body">
 		<div id="user_nav">
-			<%= link_to image_tag("home_button.gif", :border=>0), street_index_path %>
-			<%= link_to "Alerts", alert_show_path %>
+			<%= link_to "HOME", street_index_path %> | 
+			<%= link_to "ALERTS", alert_show_path %>
 			<% if mobile_device? %>
 		    	<%= link_to "Full Site", :mobile => 0 %>
 		  	<% else %>
@@ -51,14 +52,6 @@
 	<div id="yield_page">
 			<%= yield %>
 	</div>
-	
-	
-	<hr style="border-width:0px;margin:0px;" />
-	
-	<div id="footer">
-			All this created by The Dillman and RiverMan 2011
-	</div>
-
 	</body>
 </div>
 
