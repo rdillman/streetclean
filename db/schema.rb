@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20110426183814) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "username"
+    t.string  "username"
     t.string   "phone_number"
     t.string   "phone_carrier"
     t.string   "email_to_text"
