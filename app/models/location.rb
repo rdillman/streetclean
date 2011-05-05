@@ -14,18 +14,20 @@ class Location < ActiveRecord::Base
   end
   
   #Makes a pretty text message to be rendered
-  def pretty_string
+  def html_pretty_string
     tstart = self.start.to_time
     tstop = self.stop.to_time
-    str = "The next sweeping time for the "
-    str << self.block_num.to_s
-    str << " block of "
-    str << self.streetname
-    str <<" "
-    str << self.direction.upcase
-    str <<" is on "
-    str << tstart.strftime("%A, %B %d from %I:%M%p ")
-    str << tstop.strftime("until %I:%M%p.")
+    str1 = "BLOCK      : "
+    str1 << self.block_num.to_s
+    str1 << " block of "
+    str1 << self.streetname
+    str1 << " "
+    str1 << self.direction.upcase
+    str2 = "NEXT CLEAN : "
+    str2 << tstart.strftime("%A, %B %d at %I:%M%p ")
+    #str2 << tstop.strftime("until %I:%M%p.")
+    return str1, str2
   end
-  
 end
+  
+

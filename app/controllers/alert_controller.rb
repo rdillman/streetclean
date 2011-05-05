@@ -7,7 +7,6 @@ class AlertController < ApplicationController
     else
       @message = alert.create_message
     end
-    
     #Uncomment for Alert Testing
     #UserMailer.send_alert(alert).deliver    
     if @alert
@@ -24,7 +23,13 @@ class AlertController < ApplicationController
   def kill
     alarm_id = params[:q]
     to_delete = Alert.find(alarm_id)
-    to_delete.destroy
+    if current_user == to_delete.user
+      to_delete.destroy
+    else
+      respond_to do |format|
+        format      { render :file => "#{Rails.root}/public/no_street.html.erb" }
+      end
+    end
   end
   
   def show

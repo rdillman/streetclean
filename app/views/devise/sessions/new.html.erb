@@ -2,8 +2,8 @@
 
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-		  <p><%= f.label (:username, "USERNAME") %><br />
-		  <%= f.text_field :login, :placeholder => "Enter your username" %></p>
+		  <p><%= f.label (:username, "USERNAME or EMAIL") %><br />
+		  <%= f.text_field :login, :placeholder => "Enter your username/email" %></p>
 
 		  <!-- <p><%= f.label :email %><br />
 		  <%= f.email_field :email %></p> -->

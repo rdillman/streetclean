@@ -1,7 +1,9 @@
 <div class="form_box">
-	<%=@message%>
+	<h3><%=@message[0]%><br><br><%=@message[1]%></h3>
+	<%= link_to "See All Alarms",:controller => "alert", :action => "show"  %> |
+	<%= link_to "Search Again",:controller => "street", :action => "index"  %>
 </div>
-<%= link_to "See All Alarms",:controller => "alert", :action => "show"  %><br>
+
 
  
 
