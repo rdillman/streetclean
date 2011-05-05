@@ -2,6 +2,8 @@ class Alert < ActiveRecord::Base
   belongs_to :user
   belongs_to :ct
   
+  def self.
+  
   def self.send_all_alarms
     alarms = Alert.all
     now = Time.now
