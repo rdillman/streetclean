@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
   def send_next_time(user)
     @user = user
     @loc =  @user.location
-    @pretty_string = @loc.pretty_string
+    @pretty_string = @loc.html_pretty_string
     mail(:to =>"<#{user.text_address}>", :subject => "Your next clean time")
   end
   
