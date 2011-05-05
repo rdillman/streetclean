@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   # Functions for allowing Username or Email sign in as one thing.
   
   def text_address
-    str = self.phone_number
+    str = self.phone_number.gsub!(/[^0-9]*/,'')
     if self.carrier == "Verizon"
       str<<"@vtext.com"
     elsif self.carrier == "AT&T"
