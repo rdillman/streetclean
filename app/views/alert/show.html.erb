@@ -2,24 +2,15 @@
 
 
 <div id="show_alert">
-	<% if !@alert%>
+	<center>
+	<font color="orange">
+	<% if !@alarms%>
 		Currently, you have no alarms
 	<%else%>
-		<table>
-		  <tr>
-		    <th>Alarm Send Time</th>
-		    <th>Clean Time</th>
-		    <th>Content</th>
-		  </tr>
- 
 		<% @alarms.each do |alarm| %>
-		  <tr>
-		    <td><%= alarm.send_time%></td>
-		    <td><%= alarm.clean_time %></td>
-		    <td><%= alarm.location %></td>
-			<td><%=link_to "delete", :controller => "alert", :action => "kill", :q => alarm.id, :method => "get"%>
-		  </tr>
+		   <li> <%= alarm.ct_html%> | <%= alarm.location %> | <%=link_to "delete", :controller => "alert", :action => "kill", :q => alarm.id, :method => "get"%></li>
 		<% end %>
-		</table>
 	<%end%>
+	</font>
+	</center>
 </div>

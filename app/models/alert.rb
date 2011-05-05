@@ -2,7 +2,10 @@ class Alert < ActiveRecord::Base
   belongs_to :user
   belongs_to :ct
   
-  def self.
+  def ct_html
+    time = Chronic.parse(self.clean_time)
+    time.strftime("%A, %B %d at %I:%M%p")
+  end
   
   def self.send_all_alarms
     alarms = Alert.all

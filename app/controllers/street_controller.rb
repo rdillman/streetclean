@@ -28,10 +28,10 @@ class StreetController < ApplicationController
     #Format User Input from Search Bar:  101 Market St -> [101, Market, St]
     double_trouble = FALSE
     s, num = Street.find_street(params[:q])
+    @usr_qry = params[:q]
     #If Street not Found
     if (s == -1)
       double_trouble = TRUE
-      @usr_qry = params[:q]
       respond_to do |format|
         format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
         format.xml {render :xml => @usr_qry} 
@@ -63,21 +63,26 @@ class StreetController < ApplicationController
       sid = s[0].id
       s = Street.find(sid)
       next_times,b_id = s.next_clean_time(num)
-      b = Block.find(b_id)
+      if next_times == nil
+        respond_to do |format|
+          format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
+          format.xml {render :xml => @usr_qry} 
+        end
+      else
+        b = Block.find(b_id)
+        @user = current_user
+        @loc = @user.location
+        if !@loc
+          @loc = Location.create(:user_id => @user.id)
+        end
+        street_str = s.streetname<<" "<<s.suffix
+        @loc.updateloc(num,b.bottom,street_str,b.dir,next_times[0].to_time,next_times[1].to_time)
+        @pretty_str = @loc.html_pretty_string 
 
-
-      @user = current_user
-      @loc = @user.location
-      if !@loc
-        @loc = Location.create(:user_id => @user.id)
-      end
-      street_str = s.streetname<<" "<<s.suffix
-      @loc.updateloc(num,b.bottom,street_str,b.dir,next_times[0].to_time,next_times[1].to_time)
-      @pretty_str = @loc.html_pretty_string 
-
-      respond_to do |format|
-          format.html # show.html.erb
-          format.xml  { render :xml => @pretty_str }
+        respond_to do |format|
+            format.html # show.html.erb
+            format.xml  { render :xml => @pretty_str }
+        end
       end
     end
   

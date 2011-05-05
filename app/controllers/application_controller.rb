@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate
   before_filter :prepare_for_mobile
   
   
