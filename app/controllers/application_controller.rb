@@ -25,11 +25,11 @@ class ApplicationController < ActionController::Base
   end
       
   
-  protected
-  
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "ticket.cricket" && password == "winning"
-    end
-  end
-end
+#   protected
+#   
+#   def authenticate
+#     authenticate_or_request_with_http_basic do |username, password|
+#       username == "ticket.cricket" && password == "winning"
+#     end
+#   end
+# end
