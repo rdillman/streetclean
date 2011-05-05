@@ -73,7 +73,7 @@ class StreetController < ApplicationController
       end
       street_str = s.streetname<<" "<<s.suffix
       @loc.updateloc(num,b.bottom,street_str,b.dir,next_times[0].to_time,next_times[1].to_time)
-      @pretty_str = @loc.pretty_string 
+      @pretty_str = @loc.html_pretty_string 
 
       respond_to do |format|
           format.html # show.html.erb

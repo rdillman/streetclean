@@ -37,8 +37,9 @@ class Alert < ActiveRecord::Base
     message = "An alarm has been created for next street sweep of "
     message << self.location
     message <<" which begins at "
-    message << next_time.strftime("%I:%M%p")
-    message <<". Your alarm will be sent one hour before the start time."
+    message << next_time.strftime("%I:%M%p.")
+    message2 = "Your alarm will be sent one hour before the start time."
+    return message, message2
   end
   
 end
