@@ -28,8 +28,7 @@ class Alert < ActiveRecord::Base
     next_time = Chronic.parse(self.clean_time)
     warning ="WARNING! "
     warning << self.location
-    warning << " will be swept in one hour, starting at "
-    warning << next_time.strftime("%I:%M%p")<<". - TheTicketCricket"
+    warning << " will be swept in one hour - TheTicketCricket"
   end
   
   def create_message
