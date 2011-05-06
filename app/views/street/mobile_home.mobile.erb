@@ -1,10 +1,14 @@
 <div class="form_box">
-		<p><h2>Where are you parked?</h2></p>
-		<p><h3>(Ex. 3180 19th St or 3180 19th)</h3></p>
-		<p>
+	<!--<div id="ticket_photo">
+		<%= image_tag "parking_ticket.jpg", :alt => 'Parking Ticket!' %>
+	</div> -->
+	<div id="user_input">
+		<h2>Where is your car parked?</h2>
+		<p> ex. <b>101 Market</b> or <b>100 Larkin St</b></p>
 		<%= form_tag("/street/show/", :method => "get") do %>
-			  <%= text_field_tag(:q) %>
-			  <%= submit_tag("SEARCH") %>
+			  <%= text_field_tag(:q) %><br />
+			  <%= submit_tag("Search") %>
 			<% end %>
 		</p>
+	</div>
 </div >

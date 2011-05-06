@@ -1,5 +1,11 @@
 <!-- ALL OF THESE HELPER FUNCTIONS LIVE IN /app/helpers/street_helper.rb -->
-<%=@pretty_str%>
-<br>
-<%=button_to "Text Me Times!", street_text_message_path, :method => "get"%>
-<%=button_to "Create a Cleaning Alert!", alert_create_path, :method => "get"%>
+<div class="form_box">
+	<div id="pretty_str">
+		<font color ="black">
+		<h2>Your Results</h2>
+		<%=@pretty_str[0]%><br><%=@pretty_str[1]%></font>
+	</div>
+	<br>
+	<%=button_to "Create a Cleaning Alert!", alert_create_path, :method => "get"-%>
+	<%=button_to "Text Me This Time!", street_text_message_path, :method => "get"-%>
+</div>

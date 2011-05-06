@@ -1,6 +1,13 @@
-<h1>Alert#create</h1>
-<%=@message%>
-<%= link_to "See All Alarms",:controller => "alert", :action => "show"  %><br>
-
- 
-
+<div id="show_alert">
+	<center>
+	<font color="orange">
+	<% if !@alarms%>
+		Currently, you have no alarms
+	<%else%>
+		<% @alarms.each do |alarm| %>
+		   <li> <%= alarm.ct_html%> | <%= alarm.location %> | <%=link_to "delete", :controller => "alert", :action => "kill", :q => alarm.id, :method => "get"%></li>
+		<% end %>
+	<%end%>
+	</font>
+	</center>
+</div>
