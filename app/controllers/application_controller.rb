@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_filter :prepare_for_mobile
-  config.autoload_paths += %W(#{config.root}/lib)
   
   
   
