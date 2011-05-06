@@ -64,10 +64,18 @@ class StreetController < ApplicationController
       s = Street.find(sid)
       next_times,b_id = s.next_clean_time(num)
       if next_times == nil
-        respond_to do |format|
-          format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
-          format.xml {render :xml => @usr_qry} 
+        if :mobile == 0
+          respond_to do |format|
+            format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
+            format.xml {render :xml => @usr_qry} 
+          end
+        else
+          respond_to do |format|
+            format.html { render :file => "#{Rails.root}/public/no_street.mobile.erb"}
+            format.xml {render :xml => @usr_qry}
+          end
         end
+        
       else
         b = Block.find(b_id)
         @user = current_user
