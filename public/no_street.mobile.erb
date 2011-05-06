@@ -1,0 +1,14 @@
+ <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
+<p>
+<font color="orange">
+<h2>Unfortunately we don't have any records for:<br>
+<font color="red"><br> <%=@usr_qry%></font></h2>
+Please let use know if we should through the feedback button on the top right<br>
+<font>
+<font color="orange">
+<h2>Try Another Street</h2>
+<%= form_tag("/street/show/", :method => "get") do %>
+	  <%= text_field_tag(:q) %>
+	  <%= submit_tag("Search") %>
+	<% end %>
+</p>
