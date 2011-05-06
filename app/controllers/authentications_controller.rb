@@ -9,7 +9,7 @@ class AuthenticationsController < ApplicationController
     auth = request.env["omniauth.auth"]
     new_auth = Authentication.create(:provider => auth['provider'], :uid => auth['uid'])
     flash[:notice] = "Authentication successfull"
-    redirect_to new_user_registration_path
+    redirect_to new_user_registration_pathgi
   end
   
   def destroy

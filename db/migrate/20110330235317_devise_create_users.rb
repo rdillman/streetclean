@@ -1,4 +1,4 @@
-class DeviseCreateUsers < ActiveRecord::Migration
+lass DeviseCreateUsers < ActiveRecord::Migration
   def self.up
     drop_table  :users
     create_table(:users) do |t|
