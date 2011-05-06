@@ -6,11 +6,11 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-User.delete_all
- FasterCSV.foreach("db/user.csv") do |row|
- User.create!(:encrypted_password => row[0], :created_at => row[1], :updated_at => row[2], :last_sign_in_ip => row[3],:username  => row[4], :last_sign_in_at  => row[5], :carrier => row[6],:sign_in_count => row[7],:phone_number => row[9],:reset_password_token => row[10],:current_sign_in_ip => nil, :remember_created_at => row[12],:current_sign_in_at => nil,:email => row[14])
- puts(User.last)
-end
+#User.delete_all
+ #FasterCSV.foreach("db/user.csv") do |row|
+ #User.create!(:encrypted_password => row[0], :created_at => row[1], :updated_at => row[2], :last_sign_in_ip => row[3],:username  => row[4], :last_sign_in_at  => row[5], :carrier => row[6],:sign_in_count => row[7],:phone_number => row[9],:reset_password_token => row[10],:current_sign_in_ip => nil, :remember_created_at => row[12],:current_sign_in_at => nil,:email => row[14])
+ #puts(User.last)
+#end
 
 puts(Time.now)
 Nhood.delete_all
@@ -59,6 +59,6 @@ FasterCSV.foreach("db/feedback.csv") do |row|
 end
 
 puts(Time.now)
-
+puts("yay")
 
 
