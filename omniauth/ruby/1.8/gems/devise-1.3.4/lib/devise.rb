@@ -382,6 +382,10 @@ module Devise
       true
     end
   end
+  
+  config.warden do |manager|
+    manager.failure_app = CustomFailure
+  end
 
   # Generate a friendly string randomically to be used as token.
   def self.friendly_token
