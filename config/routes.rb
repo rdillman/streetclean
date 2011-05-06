@@ -30,6 +30,7 @@ Streetclean::Application.routes.draw do
   get "layouts/contact_us"
   get "layouts/feedback"
   get "layouts/feedback_submit"
+  get "layouts/tos"
   
   # Feedback
   

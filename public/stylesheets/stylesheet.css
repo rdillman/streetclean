@@ -6,7 +6,7 @@
 }
 
 #table{
-	color: blue;
+	color: white;
 }
 
 #user_nav{
@@ -18,7 +18,7 @@
 #user_sign{
 	text-align: right;
 	float: right;
-	color: blue;
+	color: white;
 }
 
 #footer{
@@ -53,7 +53,7 @@
 
 p{
 	margin: 0px;
-	color: blue;
+	color: white;
 }
 
 #links{
@@ -93,6 +93,10 @@ a:visited{
 	-moz-border-radius: 15px;
 	color: black;
 	
+}
+
+.form_box p{
+	color: blue;
 }
 
 .form_box .form_border{
