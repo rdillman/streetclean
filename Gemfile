@@ -11,6 +11,7 @@ gem 'active_scaffold'
 gem 'chronic'
 gem 'ruby-debug'
 gem "mail", "2.2.15"
+gem 'fastercsv'
 
 # Devise Authentication Gem
 gem 'devise'

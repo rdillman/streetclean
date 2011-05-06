@@ -1,4 +1,6 @@
 class AlertController < ApplicationController
+  before_filter :authenticate_user!, :except => [:intro]
+  
   def create
     @user = current_user
     alert = make_alert(@user)

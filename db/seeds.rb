@@ -46,3 +46,12 @@ open("db/new_block.csv") do |blocks|
     end
   end
 end
+
+User.delete_all
+open("db/user.csv") do |users|
+  cts.read.each_line do |user|
+    email, encrypted_password: , reset_password_token: string, remember_created_at: datetime, sign_in_count: integer, current_sign_in_at: datetime, last_sign_in_at: datetime, current_sign_in_ip: string, last_sign_in_ip: string, username: string, phone_number: string, carrier: string, created_at: datetime, updated_at: datetime)
+    = user.chomp.split(' ')
+    Ct.create!(:wday => wday,:start => start,:stop => stop, :boolyuns => boolyuns)
+  end
+end
