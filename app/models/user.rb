@@ -66,9 +66,4 @@ class User < ActiveRecord::Base
     record
   end
   
-  # HTTP Authentication
-  def self.find_record(login)
-    where({:username => login} | { :email => login}).first
-  end
-  
 end
