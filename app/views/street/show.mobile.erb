@@ -1,11 +1,27 @@
 <!-- ALL OF THESE HELPER FUNCTIONS LIVE IN /app/helpers/street_helper.rb -->
-<div class="form_box">
-	<div id="pretty_str">
-		<font color ="black">
-		<h2>Your Results</h2>
-		<%=@pretty_str[0]%><br><%=@pretty_str[1]%></font>
+<%if @pretty_str != nil%>
+	<div class="form_box">
+		<div id="pretty_str">
+			<font color ="black">
+			<h2>Your Results</h2>
+			<%=@pretty_str[0]%><br><%=@pretty_str[1]%></font>
+		</div>
+		<br>
+		<%=button_to "Create a Cleaning Alert!", alert_create_path, :method => "get"-%>
+		<%=button_to "Text Me This Time!", street_text_message_path, :method => "get"-%>
 	</div>
-	<br>
-	<%=button_to "Create a Cleaning Alert!", alert_create_path, :method => "get"-%>
-	<%=button_to "Text Me This Time!", street_text_message_path, :method => "get"-%>
-</div>
+<%else%>
+	<p>
+	<font color="orange">
+	<h2>Unfortunately we don't have any records for:<br>
+	<font color="red"><br> <%=@usr_qry%></font></h2>
+	Please let use know if we should through the feedback button on the top right<br>
+	<font>
+	<font color="orange">
+	<h2>Try Another Street</h2>
+	<%= form_tag("/street/show/", :method => "get") do %>
+		  <%= text_field_tag(:q) %>
+		  <%= submit_tag("Search") %>
+		<% end %>
+	</p>
+<%end%>

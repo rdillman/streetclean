@@ -32,9 +32,16 @@ class StreetController < ApplicationController
     #If Street not Found
     if (s == -1)
       double_trouble = TRUE
-      respond_to do |format|
-        format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
-        format.xml {render :xml => @usr_qry} 
+      if !mobile_device?
+        respond_to do |format|
+          format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
+          format.xml {render :xml => @usr_qry} 
+        end
+      else
+        respond_to do |format|
+          format.html {render :file => "#{Rails.root}/public/no_street.html.erb"}
+          format.xml {render :xml => @usr_qry}
+        end
       end
     end
     if (s != -1 && s.length >1)
@@ -64,7 +71,7 @@ class StreetController < ApplicationController
       s = Street.find(sid)
       next_times,b_id = s.next_clean_time(num)
       if next_times == nil
-        if :mobile == 0
+        if !mobile_device
           respond_to do |format|
             format.html { render :file => "#{Rails.root}/public/no_street.html.erb"}
             format.xml {render :xml => @usr_qry} 
