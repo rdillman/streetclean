@@ -4,11 +4,12 @@
 	</div> -->
 	<div id="user_input">
 		<h2>Where is your car parked?</h2>
-		<p> ex. <b>101 Market</b> or <b>100 Larkin St</b></p>
+		<!-- <p> ex. <b>101 Market</b> or <b>100 Larkin St</b></p> -->
 		<%= form_tag("/street/show/", :method => "get") do %>
-			  <%= text_field_tag(:q) %><br />
-			  <%= submit_tag("Search") %>
-			<% end %>
-		</p>
+			  <%= text_field_tag(:q, nil, :placeholder => "101 Market") %><br />
+	
+			  <%= submit_tag("Create Alert", :class => "user_submit") %>
+		<% end %>
+			
 	</div>
 </div >

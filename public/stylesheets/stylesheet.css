@@ -80,10 +80,17 @@ p{
 
 a{
 	color: #EEC015;
+	text-decoration: none;
 }
 
 a:visited{
 	color: #EEC015;
+}
+
+a:hover{
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
 }
 
 .content_box{
@@ -92,7 +99,7 @@ a:visited{
 	margin-top: 40px;
     margin-bottom: 40px;
 	width: 300px;
-	padding:40 20 80 20;
+	padding:40 20 60 20;
 	background: white;
 	border: 12px solid black;
 	border-radius: 15px;
@@ -102,20 +109,17 @@ a:visited{
 }
 
 .content_box p{
-	color: #06275D;
+	color: black;
 	text-align: block;
 }
 
-.content_box h3{
-	color: #06275D;
-}
-
-.content_box h4{
-	color: #06275D;
+.content_box h2, h3, h4{
+	color: black;
 }
 
 #about_box{
 	width: 50%;
+	text-align: left;
 }
 
 .content_box .content_border{
@@ -127,13 +131,14 @@ a:visited{
 
 input{
 	margin-bottom: 10px;
+	border-radius: 7px;
 }
 
 label{
 	text-align: left;
 }
 
-#user_submit{
+.user_submit{
 	font-size: 150%;
 	font-weight: bold;
 	-webkit-appearance: none;
@@ -163,4 +168,26 @@ label{
 	background: #EEC015;
 	border-radius: 15px;
 	border: 0;
+}
+
+#tos{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+    margin-bottom: 40px;
+	width: 75%;
+	padding:40 20 40 20;
+	background: #06275D;
+	border: none;
+	color: black;
+	text-align: left;
+}
+#tos p{
+	color: #6C7A7D;
+}
+
+#show_alert{
+	color: black;
+	text-align: center;
+	padding-top: 20px;
 }
