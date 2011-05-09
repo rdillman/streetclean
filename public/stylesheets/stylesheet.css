@@ -102,7 +102,20 @@ a:visited{
 }
 
 .content_box p{
-	color: blue;
+	color: #06275D;
+	text-align: block;
+}
+
+.content_box h3{
+	color: #06275D;
+}
+
+.content_box h4{
+	color: #06275D;
+}
+
+#about_box{
+	width: 50%;
 }
 
 .content_box .content_border{
@@ -135,9 +148,11 @@ label{
 
 #paypal_form{
 	display: inline;
-	width: 147px;
 	height: 47px;
 	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 5px;
 }
 
 #paypal_form input{
