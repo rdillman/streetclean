@@ -119,6 +119,7 @@ a:hover{
 
 #about_box{
 	width: 50%;
+	text-align: left;
 }
 
 .content_box .content_border{
@@ -130,6 +131,7 @@ a:hover{
 
 input{
 	margin-bottom: 10px;
+	border-radius: 7px;
 }
 
 label{
@@ -166,4 +168,20 @@ label{
 	background: #EEC015;
 	border-radius: 15px;
 	border: 0;
+}
+
+#tos{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+    margin-bottom: 40px;
+	width: 75%;
+	padding:40 20 40 20;
+	background: #06275D;
+	border: none;
+	color: black;
+	text-align: left;
+}
+#tos p{
+	color: #6C7A7D;
 }
