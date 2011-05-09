@@ -18,7 +18,7 @@
 	      <%= f.password_field :current_password %></p>
 
       <p><%= f.label :password, "New Password" %><br />
-        <%= f.password_field :password %></p>
+        <%= f.password_field :password, :placeholder => "Must be at least 6 characters" %></p>
 
       <p><%= f.label :password_confirmation, "Confirm New Password" %><br />
         <%= f.password_field :password_confirmation %></p>

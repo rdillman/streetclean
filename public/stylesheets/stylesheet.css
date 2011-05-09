@@ -80,10 +80,17 @@ p{
 
 a{
 	color: #EEC015;
+	text-decoration: none;
 }
 
 a:visited{
 	color: #EEC015;
+}
+
+a:hover{
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
 }
 
 .content_box{
