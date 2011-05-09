@@ -35,7 +35,7 @@
 			<%= link_to "Home", street_index_path %>
 			<%= link_to "My Alerts", alert_show_path %>
 			<% if mobile_device? %>
-		    	<%= link_to "Full Site", :mobile => 0 %>
+		    	<%= link_to "Full Site",street_index_path, :mobile => 0 %>
 		  	<% else %>
 		    	<%= link_to "Mobile Site", :mobile => 1 %>
 		  	<% end %>
