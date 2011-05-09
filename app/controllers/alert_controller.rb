@@ -5,20 +5,15 @@ class AlertController < ApplicationController
     @user = current_user
     alert = make_alert(@user)
     if alert == -1
-      @message = "An Alert Already Exists"
+      @message = "This Alert Already Exists"
     else
       @message = alert.create_message
     end
     #Uncomment for Alert Testing
     #UserMailer.send_alert(alert).deliver    
-    if @alert
-      #It Worked!
-      respond_to do |format|
-        format.html # show.html.erb
-        format.xml  { render :xml => @message }
-      end
-    else
-      #It FAILED
+    respond_to do |format|
+      format.html 
+      format.xml  { render :xml => @message }
     end
   end
 
