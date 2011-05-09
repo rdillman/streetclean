@@ -2,15 +2,11 @@
 
 
 <div id="show_alert">
-	<center>
-	<font color="orange">
-	<% if !@alarms%>
+	<% if @alarms.blank? %>
 		Currently, you have no alarms
 	<%else%>
 		<% @alarms.each do |alarm| %>
 		   <li> <%= alarm.ct_html%> | <%= alarm.location %> | <%=link_to "delete", :controller => "alert", :action => "kill", :q => alarm.id, :method => "get"%></li>
 		<% end %>
 	<%end%>
-	</font>
-	</center>
 </div>
