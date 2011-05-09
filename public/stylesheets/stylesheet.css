@@ -80,7 +80,7 @@ a:visited{
 	color: #EEC015;
 }
 
-.form_box{
+.content_box{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 40px;
@@ -95,11 +95,11 @@ a:visited{
 	
 }
 
-.form_box p{
+.content_box p{
 	color: blue;
 }
 
-.form_box .form_border{
+.content_box .content_border{
 	border: 12px solid #EEC015;
 	border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -111,6 +111,7 @@ input{
 }
 
 label{
+	text-align: left;
 	
 }
 

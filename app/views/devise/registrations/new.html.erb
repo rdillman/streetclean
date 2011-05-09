@@ -1,4 +1,4 @@
-<div class="form_box">
+<div class="content_box">
 	
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -21,8 +21,8 @@
   <p><%= f.label :carrier, "CARRIER" %><br />
 	<%= f.select :carrier, ["AT&T", "Verizon", "T-Mobile", "Boost"] %>  </p>
 	
-<p><%= f.submit "Sign up" %></p>
-<p>By clicking Sign Up you agree to our<br />
+  <p><%= f.submit "Sign up" %></p>
+  <p>By clicking Sign Up you agree to our<br />
 	<%= link_to "Terms of Service", layouts_tos_path %>
 <% end %>
 
