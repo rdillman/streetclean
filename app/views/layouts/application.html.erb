@@ -30,7 +30,7 @@
 <body id="body">
 <div id="container">
 	<body id="body">
-		<div id="user_nav">
+		<header id="user_nav">
 
 			<%= link_to "Search", street_index_path %>
 			<%= link_to "See All Alarms", alert_show_path %>
@@ -49,36 +49,34 @@
 					<% else %>
 						<%= link_to "Sign Up", new_user_registration_path %>
 					<% end %>
-
-				<%= link_to "About Us", layouts_about_us_path%>	
-				<%= link_to "Contact Us", layouts_contact_us_path %>
-				<%= link_to "Feedback", feedbacks_new_path %>
 				</div>
-		</div>
+		</header>
 
 		<!---<div id="logo">
 			
-		#</div> -->
-	<div id="yield_page">
-			<%= yield %>
+		</div> -->
+  <div id="yield_page">
+		<%= yield %>
 			
-<p><font color="orange">Please help us make TicketCricket better, so that we can continue to help you avoid tickets!</font></p>			
-			
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  </div> 
+		
+<!--	<hr style="border-width:0px;margin:0px;" /> -->
+	
+	<footer align="center" id="footer_nav">		
+          <%= link_to "About Us", layouts_about_us_path%>
+		
+		  <form id="paypal_form" action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="K5ELFZECZQM66">
-			<input type="image" src="https://www.paypalobjects.com/WEBSCR-640-20110401-1/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-			<img alt="" border="0" src="https://www.paypalobjects.com/WEBSCR-640-20110401-1/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form></p>
-			
-	</div>
-	
-	
-	<hr style="border-width:0px;margin:0px;" />
-	
-	<div id="footer">
-			All this created by The Dillman and RiverMan 2011
-	</div>
+			<!-- <input id="paypal_button" type="button" value="Donate" name="submit"> -->
+			<input type="image" src="https://www.paypalobjects.com/WEBSCR-640-20110401-1/en_US/i/btn/btn_donateCC_LG.gif"  border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			  <img alt="" border="0" src="https://www.paypalobjects.com/WEBSCR-640-20110401-1/en_US/i/scr/pixel.gif" width="1" height="1"> 
+		  </form>
+		
+		  <%= link_to "Contact Us", layouts_contact_us_path %>
+		<!-- <%= link_to "Feedback", feedbacks_new_path %> -->
+		</ul>
+	</footer>
 
 	</body>
 </div>
