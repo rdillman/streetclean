@@ -1,10 +1,9 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 <div class="content_box">
     <%= form_for(resource, :as => resource_name, :url =>   registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <%= devise_error_messages! %>
 
       <p><%= f.label :username %><br />
-      <%= f.text_field :username %></p>
+       <%= f.text_field :username %></p> 
 
       <p><%= f.label :email %><br />
       <%= f.email_field :email %></p>
@@ -12,17 +11,17 @@
       <p><%= f.label :carrier %><br />
 	    <%= f.select :carrier, ["AT&T", "Verizon", "T-Mobile"] %>  </p>
 	
-	  <p>Please Enter your phone number:</p>
+	  <p>Phone number:</p>
         <%= f.telephone_field :phone_number,:placeholder => "Ex. 6503739434"%></p>
 
-      <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+		<p><%= f.label :current_password %> <i>(to confirm your changes)</i><br />
+	      <%= f.password_field :current_password %></p>
+
+      <p><%= f.label :password, "New Password" %><br />
         <%= f.password_field :password %></p>
 
-      <p><%= f.label :password_confirmation %><br />
+      <p><%= f.label :password_confirmation, "Confirm New Password" %><br />
         <%= f.password_field :password_confirmation %></p>
-
-      <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password %></p>
 
       <p><%= f.submit "Update" %></p>
     <% end %>
