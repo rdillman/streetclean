@@ -1,0 +1,9 @@
+<div class="content_box">
+	<%if @message[0] == 84%>
+		<h3><%=@message%></h3>
+	<%else%>
+		<h3><%=@message[0]%><br><br><%=@message[1]%></h3>
+	<%end%>
+	<%= link_to "See All Alarms",:controller => "alert", :action => "show"  %> |
+	<%= link_to "Search Again",:controller => "street", :action => "index"  %>
+</div>
